@@ -77,10 +77,10 @@ class Layout extends Component {
             </Drawer>
           <AppBar style={appBarStyle} iconElementRight={<IconButton><Exit /></IconButton>} onLeftIconButtonTouchTap={this.handleToggle} onRightIconButtonTouchTap={this.handleLogout}/>
             <Switch>
-              <PropsRoute exact path="/login" component={Login} ></PropsRoute>
-              <PropsRoute exact path="/signup" component={Users} ></PropsRoute>
-              <PropsRoute exact path="/signup/personal" component={PersonalSignUpForm} ></PropsRoute>
-              <PropsRoute exact path="/signup/personal/:step" component={PersonalSignUpForm} ></PropsRoute>              
+              <PropsRoute exact path="/login" component={Login} store={store}></PropsRoute>
+              <PropsRoute exact path="/signup" component={Users} store={store}></PropsRoute>
+              <PropsRoute exact path="/signup/personal" component={PersonalSignUpForm} store={store}></PropsRoute>
+              <PropsRoute exact path="/signup/personal/:step" component={PersonalSignUpForm} store={store}></PropsRoute>              
               <PropsRoute exact path="/user/add" component={UpdateUser} store={store}></PropsRoute>
               <PropsRoute exact path="/user/:userId" component={UpdateUser} store={store}></PropsRoute>
               <PropsRoute exact path="/" component={UsersComp} store={store}></PropsRoute>

@@ -23,7 +23,6 @@ if (session) {
     session = {}
 }
 const defaultState = {
-    permissions: {},
     users: [],
     session: {},
     router: {},
