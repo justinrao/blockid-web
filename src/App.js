@@ -6,11 +6,13 @@ import Main from './components/Layout'
 import * as host from './data/host'
 
 function mapStateToProps(state) {
-  let {Permissions, ...profile} = state.profile
+  let Permissions = state.Permissions
   host.setSession(state.session)
   Permissions = Permissions || {Users: {}}
   return {
-    users: state.users
+    users: state.users,
+    session: state.session,
+    permissions: Permissions
   }
 
 }

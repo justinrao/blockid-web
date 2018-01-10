@@ -23,6 +23,9 @@ if (session) {
     session = {}
 }
 const defaultState = {
+    persmissions: {},
+    users: {},
+    session: {},
     router: {},
 }
 
