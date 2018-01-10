@@ -8,6 +8,7 @@ import { Card, CardActions, CardTitle, CardText } from 'material-ui/Card';
 import { Step, Icon } from 'semantic-ui-react'
 import InitialForm from './initial';
 import AddressForm from './address';
+import IdentityForm from './identity';
 
 const ddstyles = {
   customWidth: {
@@ -103,6 +104,7 @@ export default class SignUpForm extends Component {
           <div style={ddstyles.root}>
           {this.state.step === 0 && <InitialForm {...this.props}/>}
           {this.state.step === 1 && <AddressForm {...this.props}/>}
+          {this.state.step === 2 && <IdentityForm {...this.props}/>}
         </div>
       </CardText>
       </Card>
