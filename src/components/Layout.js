@@ -7,6 +7,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer'
 import {UpdateUser, Users as UsersComp} from './users'
+import {PersonalSignUpForm} from './signup'
 import Login from './Login';
 
 import { Switch, Route} from 'react-router-dom';
@@ -43,12 +44,12 @@ class Layout extends Component {
     injectTapEventPlugin();
   }
   componentWillMount() {
-    if (this.props.session.sessionId)
-      this.props.getProfile();
+    // if (this.props.session.sessionId)
+    //   this.props.getProfile();
   }
   componentWillUpdate(props) {
-    if (props.profile.fetchData)
-      this.props.getData(props.permissions);
+    // if (props.profile.fetchData)
+    //   this.props.getData(props.permissions);
   }
   handleToggle = () => {
     this.setOpen(!this.state.open)
@@ -69,23 +70,22 @@ class Layout extends Component {
       return (
         <MuiThemeProvider>
         <div>
-        { this.props.session.sessionId && 
           <div>
             <Drawer docked={false} open={this.state.open} onRequestChange={this.setOpen}>
             <AppBar title='Menu' style={appBarStyle} onLeftIconButtonTouchTap={this.handleToggle}/>
               <MenuItem primaryText="Users" leftIcon={<People />} containerElement={<Link to="/" />} onTouchTap={this.closeDrawer}/>
             </Drawer>
-          <AppBar title='Administrator Panel'  style={appBarStyle} iconElementRight={<IconButton><Exit /></IconButton>} onLeftIconButtonTouchTap={this.handleToggle} onRightIconButtonTouchTap={this.handleLogout}/>
+          <AppBar style={appBarStyle} iconElementRight={<IconButton><Exit /></IconButton>} onLeftIconButtonTouchTap={this.handleToggle} onRightIconButtonTouchTap={this.handleLogout}/>
+            <Login {...this.props}/>
             <Switch>
+              <PropsRoute exact path="/signup" component={Users} ></PropsRoute>
+              <PropsRoute exact path="/signup/personal" component={PersonalSignUpForm} ></PropsRoute>
+              <PropsRoute exact path="/signup/personal/:step" component={PersonalSignUpForm} ></PropsRoute>              
               <PropsRoute exact path="/user/add" component={UpdateUser} store={store}></PropsRoute>
               <PropsRoute exact path="/user/:userId" component={UpdateUser} store={store}></PropsRoute>
               <PropsRoute exact path="/" component={UsersComp} store={store}></PropsRoute>
             </Switch>
         </div>
-      }
-      { !this.props.session.sessionId && 
-        <Login {...this.props}/>
-      }
       </div>
       </MuiThemeProvider>  
       );

@@ -1,0 +1,1 @@
+export { default as PersonalSignUpForm } from './personal/form';

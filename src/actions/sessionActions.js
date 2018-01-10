@@ -1,14 +1,17 @@
 import * as Host from '../data/host'
 import * as actions from './index.js'
+import * as moment from 'moment'
 
 export function login({userId, password}) {
 	return (dispatch) => {
-		return Host.authenticate({username: userId, password}).then((session) => {
-			dispatch(gotSession(session))
-            dispatch(getProfile(session))           
-		}).catch((err) => {
+        dispatch(gotSession({sessionId: 23874234, expires: moment().add(1, 'year')}))
+        // dispatch(getProfile())           
+        // return Host.authenticate({username: userId, password}).then((session) => {
+		// 	dispatch(gotSession(session))
+        //     dispatch(getProfile(session))           
+		// }).catch((err) => {
 
-		})
+		// })
 	}
 }
 

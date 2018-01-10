@@ -5,11 +5,6 @@ import {Card, CardActions, CardTitle, CardText} from 'material-ui/Card';
 
 const style = {
   root: {
-    position: 'absolute',
-    top: 0,
-    bottom: 0,
-    left: 0,
-    right: 0,
     margin: 'auto',
     width: '40%',
     height: 325
@@ -35,9 +30,9 @@ export default class Login extends Component {
   render() {
     return (
       <Card style={style.root}>
-        <CardTitle title='Administrative Login' subtitle='Administrative credentials are required.'/>
+        <CardTitle title='bID Login'/>
         <CardText>
-        <TextField ref='username' floatingLabelText='Username' fullWidth={true} value={this.state.userId} onChange={this.handleUserIdChange} /><br />
+        <TextField ref='username' floatingLabelText='Username or Email' fullWidth={true} value={this.state.userId} onChange={this.handleUserIdChange} /><br />
         <TextField ref='password' floatingLabelText='Password' fullWidth={true} errorText={this.state.error} value={this.state.password} type='password' onChange={this.handlePasswordChange} />
         </CardText>
         <CardActions>

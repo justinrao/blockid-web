@@ -10,7 +10,7 @@ function mapStateToProps(state) {
   host.setSession(state.session)
   Permissions = Permissions || {Users: {}}
   return {
-    users: state.users,
+    users: state.users || [],
     session: state.session,
     permissions: Permissions
   }
