@@ -14,6 +14,7 @@ import { Switch, Route} from 'react-router-dom';
 import MenuItem from 'material-ui/MenuItem';
 
 import Exit from 'material-ui/svg-icons/action/exit-to-app'
+import People from 'material-ui/svg-icons/social/people'
 import IconButton from 'material-ui/IconButton'
 
 let appBarStyle = {

@@ -3,7 +3,7 @@ import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import * as actions from './actions'
 import Main from './components/Layout'
-import * as host from './Data/Host'
+import * as host from './data/host'
 
 function mapStateToProps(state) {
   let {Permissions, ...profile} = state.profile

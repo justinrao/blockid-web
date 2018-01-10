@@ -4,7 +4,7 @@ import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui
 const styles = {
     padding: '16px 24px 24px 24px'
 }
-export default class UpdateUser extends Component {
+export default class View extends Component {
 
   render() {
     return (

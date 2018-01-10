@@ -1,4 +1,4 @@
-import * as Host from '../Data/Host'
+import * as Host from '../data/host'
 import * as actions from './index.js'
 
 export function login({userId, password}) {
@@ -32,15 +32,7 @@ export function getData({Users = {}, Manage = {}}) {
     return (dispatch) => {
         if (Users.View) {
             dispatch(actions.getUser())
-            dispatch(actions.getGroup())
-            dispatch(actions.getEmployees())
         }
-        Manage.Regions && dispatch(actions.getRegions())
-        Manage.Category && dispatch(actions.getCategories())
-        Manage.RentalType && dispatch(actions.getPrograms())
-        Manage.RentalInventory && dispatch(actions.getRentalInventories())
-        Manage.RentalCondition && dispatch(actions.getConditions())
-        Manage.FundingSource && dispatch(actions.getFundingSources())
     }
 }
 export function getProfile(session) {

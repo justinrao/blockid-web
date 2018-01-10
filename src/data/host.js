@@ -38,6 +38,10 @@ export function authenticate(credentials) {
     });
 }
 
+export function getProfile() {
+    return Promise.resolve({});
+}
+
 export class User {
 
     static get() {

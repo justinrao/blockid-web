@@ -1,4 +1,4 @@
-import {User} from '../Data/Host'
+import {User} from '../data/host'
 import { push } from 'react-router-redux'
 
 export function getUser() {
