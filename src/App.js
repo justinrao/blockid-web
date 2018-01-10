@@ -12,7 +12,9 @@ function mapStateToProps(state) {
   return {
     users: state.users || [],
     session: state.session,
-    permissions: Permissions
+    permissions: Permissions,
+    idtypes: state.idtypes,
+    provinces: state.provinces
   }
 
 }

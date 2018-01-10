@@ -19,8 +19,10 @@ const ddstyles = {
 export default class IdentityForm extends Component {
   constructor(props) {
     super(props);
+    let idtype = 'Select type of ID';
     this.state = {
       id: this.props.match.params.userId,
+      idtype,
       first: '',
       middle: '',
       last: '',
@@ -34,7 +36,7 @@ export default class IdentityForm extends Component {
   confirmDialog = null
 
   handleSinChange = (event) => this.setState({ ...this.state, sin: event.target.value });
-  handletypeidChange = (event) => this.setState({ ...this.state, typeid: event.target.value });
+  handleIdTypeChange = (event) => this.setState({ ...this.state, typeid: event.target.value });
 
   render() {
     let {userId} = this.props.match.params
@@ -52,7 +54,12 @@ export default class IdentityForm extends Component {
     return (
         <div style={ddstyles.root}>
         <TextField floatingLabelText='Social Insurance Number (SIN)' value={this.state.sin} onChange={this.handleSinChange} disabled={userId && true} />
-        <TextField floatingLabelText='Type of ID Document' value={this.state.idtype} onChange={this.handleidtypeChange} disabled={userId && true} />
+        <SelectField floatingLabelText="Type of ID Document" value={this.state.idtype} style={ddstyles.customWidth} onChange={this.handleIdTypeChange} autoWidth={false}>
+              {this.props.store.idtypes.map((g) => {
+                return <MenuItem key={g.id} value={g.id} label={g.label} primaryText={g.label} />
+              })
+              }
+        </SelectField>
         </div>
     );
   }

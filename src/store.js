@@ -41,6 +41,10 @@ const defaultState = {
         {id: 'SK', label: 'Saskatchewan'},
         {id: 'QC', label: 'Quebec'},
         {id: 'YT', label: 'Yukon'}
+    ],
+    idtypes: [
+        {id: 'dl', label: 'Driver\'s License'},
+        {id: 'pp', label: 'Passport'}
     ]
 }
 
