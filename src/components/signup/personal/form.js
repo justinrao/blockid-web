@@ -14,6 +14,7 @@ const ddstyles = {
   root: {
     display: 'flex',
     flexWrap: 'wrap',
+    flexDirection: 'column'
   }
 };
 export default class SignUpForm extends Component {
@@ -27,6 +28,7 @@ export default class SignUpForm extends Component {
       phone: '',
       password: '',
       password2: '',
+      dob: '',
       error: ''
     };
   }
@@ -39,6 +41,13 @@ export default class SignUpForm extends Component {
   handleLastNameChange = (event) => this.setState({ ...this.state, last: event.target.value });
   handlePasswordChange = (event) => this.setState({ ...this.state, password: event.target.value });
   handlePassword2Change = (event) => this.setState({ ...this.state, password2: event.target.value });
+  handleDobChange = (event) => this.setState({ ...this.state, dob: event.target.value });
+  handleAddressLine1Change = (event) => this.setState({ ...this.state, addressLine1: event.target.value });
+  handleAddressLine2Change = (event) => this.setState({ ...this.state, addressLine2: event.target.value });
+  handleCityChange = (event) => this.setState({ ...this.state, city: event.target.value });
+  handleProvinceChange = (event) => this.setState({ ...this.state, province: event.target.value });
+  handlePostalCodeChange = (event) => this.setState({ ...this.state, postalcode: event.target.value });
+  handleCountryChange = (event) => this.setState({ ...this.state, country: event.target.value });
 
   handleCreate = () => {
     if (this.state.password && this.state.password === this.state.password2) {
@@ -66,19 +75,27 @@ export default class SignUpForm extends Component {
     }
     actions.push(<RaisedButton key={actions.length} label="Cancel" secondary={true} containerElement={<Link to="/" />} />)
     return (
-        <Card style={ddstyles.root}>
+        <Card >
         <CardTitle title='bID Sign Up - Personal Account'/>
         <CardText>
-          <div>
-          <TextField floatingLabelText='E-mail' value={this.state.id} onChange={this.handleUserIdChange} disabled={userId && true} /><br />
-          <TextField floatingLabelText='Phone Number' value={this.state.phone} onChange={this.handleUserIdChange} disabled={userId && true} /><br />
-          <TextField floatingLabelText='First Name' value={this.state.first} onChange={this.handleFirstNameChange} /><br/>
-          <TextField floatingLabelText='Middle Name' value={this.state.middle} onChange={this.handleMiddleNameChange} /><br/>
-          <TextField floatingLabelText='Last Name' value={this.state.last} onChange={this.handleLastNameChange} /><br />
+          <div style={ddstyles.root}>
+          <TextField floatingLabelText='E-mail' value={this.state.id} onChange={this.handleUserIdChange} disabled={userId && true} />
+          <TextField floatingLabelText='Phone Number' value={this.state.phone} onChange={this.handleUserIdChange} disabled={userId && true} />
+          <TextField floatingLabelText='First Name' value={this.state.first} onChange={this.handleFirstNameChange} />
+          <TextField floatingLabelText='Middle Name' value={this.state.middle} onChange={this.handleMiddleNameChange} />
+          <TextField floatingLabelText='Last Name' value={this.state.last} onChange={this.handleLastNameChange} />
           <br />
           <TextField floatingLabelText='Password' errorText={this.state.error} value={this.state.password} type='password' onChange={this.handlePasswordChange} /><br/>
             <TextField floatingLabelText='Confirm Password' type='password' errorText={this.state.error} value={this.state.password2} onChange={this.handlePassword2Change} /><br />
           <br />
+          <TextField floatingLabelText='Date of birth' type='dob' errorText={this.state.error} value={this.state.dob} onChange={this.handleDobChange} /><br />
+          <TextField floatingLabelText='Address Line 1' type='addressLine1' errorText={this.state.error} value={this.state.addressLine1} onChange={this.handleAddressLine1Change} /><br />
+          <TextField floatingLabelText='Address Line 2' type='addressLine2' errorText={this.state.error} value={this.state.addressLine2} onChange={this.handleAddressLine2Change} /><br />
+          <TextField floatingLabelText='City' type='city' errorText={this.state.error} value={this.state.city} onChange={this.handleCityChange} /><br />
+          <TextField floatingLabelText='Province' type='province' errorText={this.state.error} value={this.state.province} onChange={this.handleProvinceChange} /><br />
+          <TextField floatingLabelText='Postal Code' type='postalcode' errorText={this.state.error} value={this.state.postalcode} onChange={this.handlePostalCodeChange} /><br />
+          <TextField floatingLabelText='Country' type='country' errorText={this.state.error} value={this.state.country} onChange={this.handleCountryChange} /><br />
+
         </div>
       </CardText>
       </Card>
