@@ -3,11 +3,13 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
 import store, { history } from './store';
 
+
 import { Route} from 'react-router';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import { ConnectedRouter } from 'react-router-redux';
 
+import 'semantic-ui-css/semantic.min.css'
 const route = (
   <Provider store={store}>
     <ConnectedRouter history={history}>
