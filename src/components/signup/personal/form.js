@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
-import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import { Link } from 'react-router-dom';
-import SelectField from 'material-ui/SelectField';
-import MenuItem from 'material-ui/MenuItem';
-import { Card, CardActions, CardTitle, CardText } from 'material-ui/Card';
 import { Step, Icon } from 'semantic-ui-react'
 import InitialForm from './initial';
 import AddressForm from './address';
@@ -60,9 +56,7 @@ export default class SignUpForm extends Component {
     }
     actions.push(<RaisedButton key={actions.length} label="Cancel" secondary={true} containerElement={<Link to="/" />} />)
     return (
-      <Card >
-        <CardTitle title='bID Sign Up - Personal Account' />
-        <CardText>
+      <div>
         <Step.Group widths={5}>
             <Step active={this.state.step === 0}>
             <Icon name='user'/>
@@ -104,8 +98,7 @@ export default class SignUpForm extends Component {
           {this.state.step === 0 && <InitialForm {...this.props}/>}
           {this.state.step === 1 && <AddressForm {...this.props}/>}
         </div>
-      </CardText>
-      </Card>
+      </div>
         );
   }
 }

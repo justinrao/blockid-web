@@ -65,7 +65,7 @@ class Layout extends Component {
     this.setState({...this.state, open: false})
   }
   render() {
-      let {Users, Manage} = this.props.permissions;
+      let {Users} = this.props.permissions;
       const store = { ...this.props };
       return (
         <MuiThemeProvider>
