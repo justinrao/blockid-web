@@ -9,7 +9,6 @@ function mapStateToProps(state) {
   let Permissions = state.Permissions
   host.setSession(state.session)
   Permissions = Permissions || {Users: {}}
-  console.log(state.idtypes);
   return {
     users: state.users || [],
     session: state.session,
