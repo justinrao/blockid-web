@@ -4,9 +4,10 @@ import RaisedButton from 'material-ui/RaisedButton';
 import { Link } from 'react-router-dom';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
-import ConfirmDialog from '../../utils/ConfirmDialog'
 import { Card, CardActions, CardTitle, CardText } from 'material-ui/Card';
 import { Step, Icon } from 'semantic-ui-react'
+import InitialForm from './initial';
+import AddressForm from './address';
 
 const ddstyles = {
   customWidth: {
@@ -32,38 +33,19 @@ export default class SignUpForm extends Component {
       password: '',
       password2: '',
       dob: '',
+      addressLine1: '',
+      addressLine2: '',
+      city: '',
+      province: '',
+      postalcode: '',
+      country: '',
       error: ''
     };
   }
   confirmDialog = null
 
   handleUserIdChange = (event) => this.setState({ ...this.state, id: event.target.value });
-  handleFirstNameChange = (event) => this.setState({ ...this.state, first: event.target.value });
-  handleMiddleNameChange = (event) => this.setState({ ...this.state, middle: event.target.value });
-  handlePhoneChange = (event) => this.setState({ ...this.state, phone: event.target.value });
-  handleLastNameChange = (event) => this.setState({ ...this.state, last: event.target.value });
-  handlePasswordChange = (event) => this.setState({ ...this.state, password: event.target.value });
-  handlePassword2Change = (event) => this.setState({ ...this.state, password2: event.target.value });
-  handleDobChange = (event) => this.setState({ ...this.state, dob: event.target.value });
-  handleAddressLine1Change = (event) => this.setState({ ...this.state, addressLine1: event.target.value });
-  handleAddressLine2Change = (event) => this.setState({ ...this.state, addressLine2: event.target.value });
-  handleCityChange = (event) => this.setState({ ...this.state, city: event.target.value });
-  handleProvinceChange = (event) => this.setState({ ...this.state, province: event.target.value });
-  handlePostalCodeChange = (event) => this.setState({ ...this.state, postalcode: event.target.value });
-  handleCountryChange = (event) => this.setState({ ...this.state, country: event.target.value });
 
-  handleCreate = () => {
-    if (this.state.password && this.state.password === this.state.password2) {
-      this.setState({ ...this.state, error: '' })
-      this.props.store.addUser(this.state)
-    } else {
-      if (this.state.password) {
-        this.setState({ ...this.state, error: 'Please enter a password.' })
-      } else {
-        this.setState({ ...this.state, error: 'Passwords do not match.' })
-      }
-    }
-  }
   render() {
     let { userId } = this.props.match.params
     let actions = []
@@ -118,25 +100,10 @@ export default class SignUpForm extends Component {
               </Step.Content>
             </Step>
         </Step.Group>
-            <div style={ddstyles.root}>
-              <TextField floatingLabelText='E-mail' value={this.state.id} onChange={this.handleUserIdChange} disabled={userId && true} />
-              <TextField floatingLabelText='Phone Number' value={this.state.phone} onChange={this.handleUserIdChange} disabled={userId && true} />
-              <TextField floatingLabelText='First Name' value={this.state.first} onChange={this.handleFirstNameChange} />
-              <TextField floatingLabelText='Middle Name' value={this.state.middle} onChange={this.handleMiddleNameChange} />
-              <TextField floatingLabelText='Last Name' value={this.state.last} onChange={this.handleLastNameChange} />
-              <br />
-              <TextField floatingLabelText='Password' errorText={this.state.error} value={this.state.password} type='password' onChange={this.handlePasswordChange} /><br />
-              <TextField floatingLabelText='Confirm Password' type='password' errorText={this.state.error} value={this.state.password2} onChange={this.handlePassword2Change} /><br />
-              <br />
-              <TextField floatingLabelText='Date of birth' type='dob' errorText={this.state.error} value={this.state.dob} onChange={this.handleDobChange} /><br />
-              <TextField floatingLabelText='Address Line 1' type='addressLine1' errorText={this.state.error} value={this.state.addressLine1} onChange={this.handleAddressLine1Change} /><br />
-              <TextField floatingLabelText='Address Line 2' type='addressLine2' errorText={this.state.error} value={this.state.addressLine2} onChange={this.handleAddressLine2Change} /><br />
-              <TextField floatingLabelText='City' type='city' errorText={this.state.error} value={this.state.city} onChange={this.handleCityChange} /><br />
-              <TextField floatingLabelText='Province' type='province' errorText={this.state.error} value={this.state.province} onChange={this.handleProvinceChange} /><br />
-              <TextField floatingLabelText='Postal Code' type='postalcode' errorText={this.state.error} value={this.state.postalcode} onChange={this.handlePostalCodeChange} /><br />
-              <TextField floatingLabelText='Country' type='country' errorText={this.state.error} value={this.state.country} onChange={this.handleCountryChange} /><br />
-
-            </div>
+          <div style={ddstyles.root}>
+          {this.state.step === 0 && <InitialForm {...this.props}/>}
+          {this.state.step === 1 && <AddressForm {...this.props}/>}
+        </div>
       </CardText>
       </Card>
         );
