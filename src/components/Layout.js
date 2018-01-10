@@ -65,7 +65,7 @@ class Layout extends Component {
     this.setState({...this.state, open: false})
   }
   render() {
-      let {Users, Manage} = this.props.permissions;
+      let {Users} = this.props.permissions;
       const store = { ...this.props };
       return (
         <MuiThemeProvider>
@@ -76,8 +76,8 @@ class Layout extends Component {
               <MenuItem primaryText="Users" leftIcon={<People />} containerElement={<Link to="/" />} onTouchTap={this.closeDrawer}/>
             </Drawer>
           <AppBar style={appBarStyle} iconElementRight={<IconButton><Exit /></IconButton>} onLeftIconButtonTouchTap={this.handleToggle} onRightIconButtonTouchTap={this.handleLogout}/>
-            <Login {...this.props}/>
             <Switch>
+              <PropsRoute exact path="/login" component={Login} ></PropsRoute>
               <PropsRoute exact path="/signup" component={Users} ></PropsRoute>
               <PropsRoute exact path="/signup/personal" component={PersonalSignUpForm} ></PropsRoute>
               <PropsRoute exact path="/signup/personal/:step" component={PersonalSignUpForm} ></PropsRoute>              

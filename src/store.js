@@ -27,6 +27,21 @@ const defaultState = {
     users: [],
     session: {},
     router: {},
+    provinces: [
+        {id: 'AB', label: 'Alberta'},
+        {id: 'BC', label: 'British Columbia'},
+        {id: 'MB', label: 'Manitoba'},
+        {id: 'ON', label: 'Ontario'},
+        {id: 'NB', label: 'New Brunswick'},
+        {id: 'NL', label: 'Newfoundland'},
+        {id: 'NS', label: 'Nova Scotia'},
+        {id: 'NT', label: 'Northwest Territories'},
+        {id: 'NU', label: 'Nunavut'},
+        {id: 'PE', label: 'Prince Edward Island'},
+        {id: 'SK', label: 'Saskatchewan'},
+        {id: 'QC', label: 'Quebec'},
+        {id: 'YT', label: 'Yukon'}
+    ]
 }
 
 export const history = createBrowserHistory({ basename: '/' })
