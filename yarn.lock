@@ -322,7 +322,7 @@ aws4@^1.2.1, aws4@^1.6.0:
 
 axios@^0.17.1:
   version "0.17.1"
-  resolved "http://rbconenexus.fg.rbc.com:8081/repository/u0r0-npm-group/axios/-/axios-0.17.1.tgz#2d8e3e5d0bdbd7327f91bc814f5c57660f81824d"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.17.1.tgz#2d8e3e5d0bdbd7327f91bc814f5c57660f81824d"
   dependencies:
     follow-redirects "^1.2.5"
     is-buffer "^1.1.5"
@@ -2766,7 +2766,7 @@ flush-write-stream@^1.0.0:
 
 follow-redirects@^1.2.5:
   version "1.3.0"
-  resolved "http://rbconenexus.fg.rbc.com:8081/repository/u0r0-npm-group/follow-redirects/-/follow-redirects-1.3.0.tgz#f684871fc116d2e329fda55ef67687f4fabc905c"
+  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.3.0.tgz#f684871fc116d2e329fda55ef67687f4fabc905c"
   dependencies:
     debug "^3.1.0"
 
@@ -3955,7 +3955,7 @@ jest@20.0.4:
 
 jquery@x.*:
   version "3.2.1"
-  resolved "http://rbconenexus.fg.rbc.com:8081/repository/u0r0-npm-group/jquery/-/jquery-3.2.1.tgz#5c4d9de652af6cd0a770154a631bba12b015c787"
+  resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.2.1.tgz#5c4d9de652af6cd0a770154a631bba12b015c787"
 
 js-base64@^2.1.9:
   version "2.4.0"
@@ -6075,7 +6075,7 @@ selfsigned@^1.9.1:
 
 semantic-ui-css@^2.2.12:
   version "2.2.12"
-  resolved "http://rbconenexus.fg.rbc.com:8081/repository/u0r0-npm-group/semantic-ui-css/-/semantic-ui-css-2.2.12.tgz#afc462e5bb4f8a0dcfe3dca11274499a997490dd"
+  resolved "https://registry.yarnpkg.com/semantic-ui-css/-/semantic-ui-css-2.2.12.tgz#afc462e5bb4f8a0dcfe3dca11274499a997490dd"
   dependencies:
     jquery x.*
 

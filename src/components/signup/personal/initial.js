@@ -4,16 +4,20 @@ import RaisedButton from 'material-ui/RaisedButton';
 import {Link} from 'react-router-dom';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
-import ConfirmDialog from '../../utils/ConfirmDialog'
+import DatePicker from 'material-ui/DatePicker';
+import {grey700} from 'material-ui/styles/colors';
 
 const ddstyles = {
-  customWidth: {
-
+  floatStyle: {
+    color: grey700
   },
+
   root: {
     display: 'flex',
     flexWrap: 'wrap',
-    flexDirection: 'column'
+    flexDirection: 'column',
+    margin: 'auto',
+    width: '40%'
   }
 };
 export default class InitialForm extends Component {
@@ -57,6 +61,12 @@ export default class InitialForm extends Component {
   render() {
     let {userId} = this.props.match.params
     let actions = []
+
+    let styles = {
+      fullWidth: true,
+      floatingLabelStyle: ddstyles.floatStyle,
+      underlineStyle: { borderColor: grey700}
+    }
     if (userId) {
       actions.push(
         <div key={actions.length}><RaisedButton label="Save" primary={true} onTouchTap={this.handleSave} />&nbsp;&nbsp;
@@ -69,16 +79,15 @@ export default class InitialForm extends Component {
     actions.push(<RaisedButton key={actions.length} label="Cancel" secondary={true} containerElement={<Link to="/" />} />)
     return (
         <div style={ddstyles.root}>
-        <TextField floatingLabelText='E-mail' value={this.state.id} onChange={this.handleUserIdChange} disabled={userId && true} />
-        <TextField floatingLabelText='Phone Number' value={this.state.phone} onChange={this.handleUserIdChange} disabled={userId && true} />
-        <TextField floatingLabelText='First Name' value={this.state.first} onChange={this.handleFirstNameChange} />
-        <TextField floatingLabelText='Middle Name' value={this.state.middle} onChange={this.handleMiddleNameChange} />
-        <TextField floatingLabelText='Last Name' value={this.state.last} onChange={this.handleLastNameChange} />
-        <TextField floatingLabelText='Date of birth' type='dob' errorText={this.state.error} value={this.state.dob} onChange={this.handleDobChange} />
+        <TextField {...styles} floatingLabelText='First Name' value={this.state.first} onChange={this.handleFirstNameChange} />
+        <TextField {...styles} floatingLabelText='Middle Name' value={this.state.middle} onChange={this.handleMiddleNameChange} />
+        <TextField {...styles} floatingLabelText='Last Name' value={this.state.last} onChange={this.handleLastNameChange} />
+        <TextField {...styles}  floatingLabelText='E-mail' type="email" value={this.state.id} onChange={this.handleUserIdChange} disabled={userId && true} />
+        <TextField {...styles} floatingLabelText='Phone Number' type="phone" value={this.state.phone} onChange={this.handlePhoneChange} />
+        <DatePicker {...styles}  floatingLabelText='Date of Birth' value={this.state.dob} onChange={this.handleDobChange}/>
         <br />
-        <TextField floatingLabelText='Password' errorText={this.state.error} value={this.state.password} type='password' onChange={this.handlePasswordChange} /><br/>
-        <TextField floatingLabelText='Confirm Password' type='password' errorText={this.state.error} value={this.state.password2} onChange={this.handlePassword2Change} /><br />
-        <br />
+        <TextField {...styles} floatingLabelText='Password' errorText={this.state.error} value={this.state.password} type='password' onChange={this.handlePasswordChange} />
+        <TextField {...styles} floatingLabelText='Confirm Password' type='password' errorText={this.state.error} value={this.state.password2} onChange={this.handlePassword2Change} />
         </div>
     );
   }

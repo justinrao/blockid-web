@@ -59,35 +59,35 @@ export default class SignUpForm extends Component {
     return (
       <div>
         <Step.Group widths={5}>
-            <Step active={this.state.step === 0}>
+            <Step link active={this.state.step === 0}>
             <Icon name='user'/>
               <Step.Content>
                 <Step.Title>Account</Step.Title>
                 <Step.Description>Enter account details</Step.Description>
               </Step.Content>
             </Step>
-            <Step active={this.state.step === 1}>
+            <Step link active={this.state.step === 1}>
             <Icon name='marker'/>
               <Step.Content>
                 <Step.Title>Address</Step.Title>
                 <Step.Description>Enter your current address</Step.Description>
               </Step.Content>
             </Step>
-            <Step active={this.state.step === 2}>
+            <Step link active={this.state.step === 2}>
             <Icon name='credit card'/>
               <Step.Content>
                 <Step.Title>Identification</Step.Title>
                 <Step.Description>Enter government issued identification</Step.Description>
               </Step.Content>
             </Step>
-            <Step active={this.state.step === 3}>
+            <Step link active={this.state.step === 3}>
               <Icon name='file outline'/>
               <Step.Content>
                 <Step.Title>Documentation</Step.Title>
                 <Step.Description>Upload identification documents</Step.Description>
               </Step.Content>
             </Step>
-            <Step active={this.state.step === 4}>
+            <Step link active={this.state.step === 4}>
               <Icon name='protect'/>
               <Step.Content>
                 <Step.Title>Validation</Step.Title>
