@@ -1,17 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import TextField from 'material-ui/TextField';
-import RaisedButton from 'material-ui/RaisedButton';
-import {Link} from 'react-router-dom';
-import SelectField from 'material-ui/SelectField';
-import MenuItem from 'material-ui/MenuItem';
-import DatePicker from 'material-ui/DatePicker';
-import {grey700} from 'material-ui/styles/colors';
-
+import moment from 'moment'
 const ddstyles = {
-  floatStyle: {
-    color: grey700
-  },
-
   root: {
     display: 'flex',
     flexWrap: 'wrap',
@@ -20,7 +10,8 @@ const ddstyles = {
     width: '40%'
   }
 };
-export default class InitialForm extends Component {
+
+export default class SignUpForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -31,7 +22,7 @@ export default class InitialForm extends Component {
       phone: '',
       password: '',
       password2: '',
-      dob: '',
+      dob: moment(),
       error: ''
     };
   }
@@ -44,7 +35,7 @@ export default class InitialForm extends Component {
   handleLastNameChange = (event) => this.setState({ ...this.state, last: event.target.value });
   handlePasswordChange = (event) => this.setState({ ...this.state, password: event.target.value });
   handlePassword2Change = (event) => this.setState({ ...this.state, password2: event.target.value });
-  handleDobChange = (event, value) => this.setState({ ...this.state, dob: value });
+  handleDobChange = (event) => this.setState({ ...this.state, dob: event.target.value });
 
   handleCreate = () => {
     if (this.state.password && this.state.password === this.state.password2) {
@@ -57,37 +48,30 @@ export default class InitialForm extends Component {
         this.setState({ ...this.state, error: 'Passwords do not match.' })
       }
     }
+    const styles = theme => ({
+      container: {
+        display: 'flex',
+        flexWrap: 'wrap',
+      },
+      input: {
+        margin: theme.spacing.unit,
+      },
+    });
   }
   render() {
-    let {userId} = this.props.match.params
-    let actions = []
-
-    let styles = {
-      fullWidth: true,
-      floatingLabelStyle: ddstyles.floatStyle,
-      underlineStyle: { borderColor: grey700}
-    }
-    if (userId) {
-      actions.push(
-        <div key={actions.length}><RaisedButton label="Save" primary={true} onTouchTap={this.handleSave} />&nbsp;&nbsp;
-        <RaisedButton label="Delete" secondary={true} onTouchTap={this.handleDelete} />
-        </div>
-      )
-    } else {
-      actions.push(<div key={actions.length}><RaisedButton label="Create" primary={true} onTouchTap={this.handleCreate} /></div>)
-    }
-    actions.push(<RaisedButton key={actions.length} label="Cancel" secondary={true} containerElement={<Link to="/" />} />)
     return (
-        <div style={ddstyles.root}>
-        <TextField {...styles} floatingLabelText='First Name' value={this.state.first} onChange={this.handleFirstNameChange} />
-        <TextField {...styles} floatingLabelText='Middle Name' value={this.state.middle} onChange={this.handleMiddleNameChange} />
-        <TextField {...styles} floatingLabelText='Last Name' value={this.state.last} onChange={this.handleLastNameChange} />
-        <TextField {...styles}  floatingLabelText='E-mail' type="email" value={this.state.id} onChange={this.handleUserIdChange} disabled={userId && true} />
-        <TextField {...styles} floatingLabelText='Phone Number' type="phone" value={this.state.phone} onChange={this.handlePhoneChange} />
-        <DatePicker {...styles}  floatingLabelText='Date of Birth' value={this.state.dob} onChange={this.handleDobChange}/>
-        <br />
-        <TextField {...styles} floatingLabelText='Password' errorText={this.state.error} value={this.state.password} type='password' onChange={this.handlePasswordChange} />
-        <TextField {...styles} floatingLabelText='Confirm Password' type='password' errorText={this.state.error} value={this.state.password2} onChange={this.handlePassword2Change} />
+          <div style={ddstyles.root}>
+          <TextField label='E-mail' value={this.state.id} onChange={this.handleUserIdChange} />
+          <TextField label='Phone Number' value={this.state.phone} onChange={this.handlePhoneChange} />
+          <TextField label='First Name' value={this.state.first} onChange={this.handleFirstNameChange} />
+          <TextField label='Middle Name' value={this.state.middle} onChange={this.handleMiddleNameChange} />
+          <TextField label='Last Name' value={this.state.last} onChange={this.handleLastNameChange} />
+          <TextField label='Date of Birth' type="date" value={this.state.last} onChange={this.handleDobChange} InputLabelProps={{
+          shrink: true,
+        }}/>
+          <br />
+          <TextField label='Password' errorText={this.state.error} value={this.state.password} type='password' onChange={this.handlePasswordChange} />
+            <TextField label='Confirm Password' type='password' errorText={this.state.error} value={this.state.password2} onChange={this.handlePassword2Change} />
         </div>
     );
   }

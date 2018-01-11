@@ -10,6 +10,7 @@ import registerServiceWorker from './registerServiceWorker';
 import { ConnectedRouter } from 'react-router-redux';
 
 import 'semantic-ui-css/semantic.min.css'
+
 const route = (
   <Provider store={store}>
     <ConnectedRouter history={history}>

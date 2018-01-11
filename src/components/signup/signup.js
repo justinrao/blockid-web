@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
-import TextField from 'material-ui/TextField';
-import RaisedButton from 'material-ui/RaisedButton';
-import {Link} from 'react-router-dom';
-import SelectField from 'material-ui/SelectField';
-import MenuItem from 'material-ui/MenuItem';
-import {grey700} from 'material-ui/styles/colors';
- import {PersonalAccountForm} from './index'
+import {grey700} from 'material-ui/colors';
+import {PersonalAccountForm} from './index'
 
 const ddstyles = {
   floatStyle: {
@@ -36,7 +31,7 @@ export default class SignUpForm extends Component {
   handlePasswordChange = (event) => this.setState({ ...this.state, password: event.target.value });
   handlePassword2Change = (event) => this.setState({ ...this.state, password2: event.target.value });
 
-  handleCreate = () => {
+  handleSignUp = () => {
     if (this.state.password && this.state.password === this.state.password2) {
         this.setState({ ...this.state, error: '' })
         this.props.store.addUser(this.state)

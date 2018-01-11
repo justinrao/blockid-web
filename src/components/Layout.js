@@ -1,21 +1,15 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import AppBar from 'material-ui/AppBar';
-import Drawer from 'material-ui/Drawer'
-import {UpdateUser, Users as UsersComp} from './users'
 import {PersonalSignUpForm, SignUpForm} from './signup'
 import Login from './Login';
 
 import { Switch, Route} from 'react-router-dom';
 
-import MenuItem from 'material-ui/MenuItem';
+import Menu, {MenuItem} from 'material-ui/Menu';
 
-import Exit from 'material-ui/svg-icons/action/exit-to-app'
-import People from 'material-ui/svg-icons/social/people'
 import IconButton from 'material-ui/IconButton'
 
 let appBarStyle = {
@@ -71,19 +65,12 @@ class Layout extends Component {
         <MuiThemeProvider>
         <div>
           <div>
-            <Drawer docked={false} open={this.state.open} onRequestChange={this.setOpen}>
-            <AppBar title='Menu' style={appBarStyle} onLeftIconButtonTouchTap={this.handleToggle}/>
-              <MenuItem primaryText="Users" leftIcon={<People />} containerElement={<Link to="/" />} onTouchTap={this.closeDrawer}/>
-            </Drawer>
-          <AppBar style={appBarStyle} iconElementRight={<IconButton><Exit /></IconButton>} onLeftIconButtonTouchTap={this.handleToggle} onRightIconButtonTouchTap={this.handleLogout}/>
             <Switch>
               <PropsRoute exact path="/login" component={Login} store={store}></PropsRoute>
               <PropsRoute exact path="/signup" component={SignUpForm} store={store}></PropsRoute>
               <PropsRoute exact path="/signup/personal" component={PersonalSignUpForm} store={store}></PropsRoute>
               <PropsRoute exact path="/signup/personal/:step" component={PersonalSignUpForm} store={store}></PropsRoute>              
-              <PropsRoute exact path="/user/add" component={UpdateUser} store={store}></PropsRoute>
-              <PropsRoute exact path="/user/:userId" component={UpdateUser} store={store}></PropsRoute>
-              <PropsRoute exact path="/" component={UsersComp} store={store}></PropsRoute>
+              <PropsRoute exact path="/" component={SignUpForm} store={store}></PropsRoute>
             </Switch>
         </div>
       </div>

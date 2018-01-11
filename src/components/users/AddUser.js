@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import TextField from 'material-ui/TextField';
-import RaisedButton from 'material-ui/RaisedButton';
+import Button from 'material-ui/Button';
 import View from './AddView';
 import {Link} from 'react-router-dom';
-import SelectField from 'material-ui/SelectField';
-import MenuItem from 'material-ui/MenuItem';
+import Select from 'material-ui/Select';
+import {MenuItem} from 'material-ui/Menu';
 import ConfirmDialog from '../utils/ConfirmDialog'
 
 const ddstyles = {
@@ -76,14 +76,14 @@ export default class UpdateUser extends Component {
     let actions = []
     if (userId) {
       actions.push(
-        <div key={actions.length}><RaisedButton label="Save" primary={true} onTouchTap={this.handleSave} />&nbsp;&nbsp;
-        <RaisedButton label="Delete" secondary={true} onTouchTap={this.handleDelete} />
+        <div key={actions.length}><Button raised label="Save" color="primary" onTouchTap={this.handleSave} />&nbsp;&nbsp;
+        <Button raised label="Delete" secondary={true} onTouchTap={this.handleDelete} />
         </div>
       )
     } else {
-      actions.push(<div key={actions.length}><RaisedButton label="Create" primary={true} onTouchTap={this.handleCreate} /></div>)
+      actions.push(<div key={actions.length}><Button raised label="Create" color="primary" onTouchTap={this.handleCreate} /></div>)
     }
-    actions.push(<RaisedButton key={actions.length} label="Cancel" secondary={true} containerElement={<Link to="/" />} />)
+    actions.push(<Button raised key={actions.length} label="Cancel" color="secondary" containerElement={<Link to="/" />} />)
     return (
       <div>
         <ConfirmDialog ref={(r) => this.confirmDialog = r}
@@ -101,12 +101,12 @@ export default class UpdateUser extends Component {
             <TextField floatingLabelText='Repeat' type='password' errorText={this.state.error} value={this.state.password2} onChange={this.handlePassword2Change} /><br />
           <br />
           <div style={ddstyles.root}>
-            <SelectField floatingLabelText="Group" value={this.state.group} style={ddstyles.customWidth} onChange={this.handleGroupChange} autoWidth={false}>
+            <Select floatingLabelText="Group" value={this.state.group} style={ddstyles.customWidth} onChange={this.handleGroupChange} autoWidth={false}>
               {this.props.store.groups.map((g) => {
                 return <MenuItem key={g.Id} value={g.Id} label={g.Name} primaryText={g.Name} />
               })
               }
-            </SelectField></div>
+            </Select></div>
         </View>
       </div>
     );

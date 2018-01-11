@@ -4,7 +4,7 @@ import TextField from 'material-ui/TextField';
 import Search from 'material-ui/svg-icons/action/search'
 import Close from 'material-ui/svg-icons/navigation/close'
 import IconButton from 'material-ui/IconButton'
-import { grey500 } from 'material-ui/styles/colors';
+import { grey500 } from 'material-ui/colors';
 
 
 const styles = {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import User from './User';
 import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
-import RaisedButton from 'material-ui/RaisedButton';
+import Button from 'material-ui/Button';
 import {Link} from 'react-router-dom';
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow} from 'material-ui/Table';
 
@@ -28,7 +28,7 @@ export default class Users extends Component {
       { permissions.Users.AddUser && <ToolbarGroup lastChild={true}>
         <ToolbarTitle text="Options" />
         <ToolbarSeparator />
-        <RaisedButton label="Add User" primary={true} containerElement={<Link to="/user/add" />}/>
+        <Button raised label="Add User" color="primary" containerElement={<Link to="/user/add" />}/>
       </ToolbarGroup>
       }
     </Toolbar>

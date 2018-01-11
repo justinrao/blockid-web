@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
+import { withStyles } from 'material-ui/styles';
+
 import TextField from 'material-ui/TextField';
-import RaisedButton from 'material-ui/RaisedButton';
 import {Link} from 'react-router-dom';
-import SelectField from 'material-ui/SelectField';
-import MenuItem from 'material-ui/MenuItem';
-import DatePicker from 'material-ui/DatePicker';
-import {grey700} from 'material-ui/styles/colors';
+import {grey700} from 'material-ui/colors';
 
 const ddstyles = {
   floatStyle: {
@@ -49,18 +47,17 @@ export default class AccountForm extends Component {
     }
   }
   render() {
-    let {userId} = this.props.match.params
-    let styles = {
-      fullWidth: true,
-      floatingLabelStyle: ddstyles.floatStyle,
-      underlineStyle: { borderColor: grey700}
-    }
+    const { classes } = this.props;
     return (
         <div style={ddstyles.root}>
-        <TextField {...styles} floatingLabelText='E-mail' type="email" value={this.state.id} onChange={this.handleUserIdChange} disabled={userId && true} />
-        <TextField {...styles} floatingLabelText='Password' errorText={this.state.error} value={this.state.password} type='password' onChange={this.handlePasswordChange} />
-        <TextField {...styles} floatingLabelText='Confirm Password' type='password' errorText={this.state.error} value={this.state.password2} onChange={this.handlePassword2Change} />
+        <TextField label='E-mail' type="email" value={this.state.id} onChange={this.handleUserIdChange} />
+        <TextField label='Password' errorText={this.state.error} value={this.state.password} type='password' onChange={this.handlePasswordChange} />
+        <TextField label='Confirm Password' type='password' errorText={this.state.error} value={this.state.password2} onChange={this.handlePassword2Change} />
         </div>
     );
   }
 }
+
+// AccountForm.propTypes = {
+//   classes: PropTypes.object.isRequired;
+// }

@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import RaisedButton from 'material-ui/RaisedButton';
-import { Link } from 'react-router-dom';
 import { Step, Icon } from 'semantic-ui-react'
 import InitialForm from './initial';
 import AddressForm from './address';
 import IdentityForm from './identity';
 import UploadIdentificationForm from './upload';
-
+import Card, {CardContent, CardHeader} from 'material-ui/Card'
 const ddstyles = {
   customWidth: {
 
@@ -45,21 +43,9 @@ export default class SignUpForm extends Component {
   handleUserIdChange = (event) => this.setState({ ...this.state, id: event.target.value });
 
   render() {
-    let { userId } = this.props.match.params
-    let actions = []
-    if (userId) {
-      actions.push(
-        <div key={actions.length}><RaisedButton label="Save" primary={true} onTouchTap={this.handleSave} />&nbsp;&nbsp;
-        <RaisedButton label="Delete" secondary={true} onTouchTap={this.handleDelete} />
-        </div>
-      )
-    } else {
-      actions.push(<div key={actions.length}><RaisedButton label="Create" primary={true} onTouchTap={this.handleCreate} /></div>)
-    }
-    actions.push(<RaisedButton key={actions.length} label="Cancel" secondary={true} containerElement={<Link to="/" />} />)
-    return (
-      <div>
-        <Step.Group widths={5}>
+
+    const header = (
+      <Step.Group widths={5} size="tiny">
             <Step link active={this.state.step === 0}>
             <Icon name='user'/>
               <Step.Content>
@@ -96,13 +82,17 @@ export default class SignUpForm extends Component {
               </Step.Content>
             </Step>
         </Step.Group>
-          <div style={ddstyles.root}>
+    )
+    return (
+        <Card >
+        <CardContent style={ddstyles.root}>
+         {header}
           {this.state.step === 0 && <InitialForm {...this.props}/>}
           {this.state.step === 1 && <AddressForm {...this.props}/>}
           {this.state.step === 2 && <IdentityForm {...this.props}/>}
           {this.state.step === 3 && <UploadIdentificationForm {...this.props}/>}
-        </div>
-      </div>
+        </CardContent>
+      </Card>
         );
   }
 }

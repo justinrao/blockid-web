@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import TextField from 'material-ui/TextField';
-import RaisedButton from 'material-ui/RaisedButton';
+import Button from 'material-ui/Button';
 import {Card, CardActions, CardTitle, CardText} from 'material-ui/Card';
 
 const style = {
@@ -36,7 +36,7 @@ export default class Login extends Component {
         <TextField ref='password' floatingLabelText='Password' fullWidth={true} errorText={this.state.error} value={this.state.password} type='password' onChange={this.handlePasswordChange} />
         </CardText>
         <CardActions>
-            <RaisedButton label="Login" fullWidth={true} primary={true} onTouchTap={this.handleLogin} />
+            <Button  raised label="Login" fullWidth={true} color="primary" onTouchTap={this.handleLogin} />
         </CardActions>
       </Card>
     );
