@@ -5,6 +5,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import {PersonalSignUpForm, SignUpForm} from './signup'
 import Login from './Login';
+import Landing from './landing';
 
 import { Switch, Route} from 'react-router-dom';
 
@@ -70,7 +71,7 @@ class Layout extends Component {
               <PropsRoute exact path="/signup" component={SignUpForm} store={store}></PropsRoute>
               <PropsRoute exact path="/signup/personal" component={PersonalSignUpForm} store={store}></PropsRoute>
               <PropsRoute exact path="/signup/personal/:step" component={PersonalSignUpForm} store={store}></PropsRoute>              
-              <PropsRoute exact path="/" component={SignUpForm} store={store}></PropsRoute>
+              <PropsRoute exact path="/" component={Landing} store={store}></PropsRoute>
             </Switch>
         </div>
       </div>

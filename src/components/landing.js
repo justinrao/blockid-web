@@ -1,26 +1,13 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import {SignUpForm} from './signup'
+import Card, {CardContent} from 'material-ui/Card'
 
-import injectTapEventPlugin from 'react-tap-event-plugin';
-import AppBar from 'material-ui/AppBar';
-import Drawer from 'material-ui/Drawer'
-import {UpdateUser, Users as UsersComp} from './users'
-import {PersonalSignUpForm, SignUpForm} from './signup'
 import Login from './Login';
 
 import { Switch, Route} from 'react-router-dom';
 
-import MenuItem from 'material-ui/MenuItem';
-
-import Exit from 'material-ui/svg-icons/action/exit-to-app'
-import People from 'material-ui/svg-icons/social/people'
-import IconButton from 'material-ui/IconButton'
-
-let appBarStyle = {
-    backgroundColor: '#212121' 
-}
 const renderMergedProps = (component, ...rest) => {
   const finalProps = Object.assign({}, ...rest);
   return (
@@ -35,13 +22,12 @@ const PropsRoute = ({ component, ...rest }) => {
     }}/>
   );
 }  
-class LandingPage extends Component {
+export default class LandingPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
       signin: false
     };    
-    injectTapEventPlugin();
   }
   componentWillMount() {
     // if (this.props.session.sessionId)
@@ -52,23 +38,31 @@ class LandingPage extends Component {
     //   this.props.getData(props.permissions);
   }
   handleToggle = () => {
-    this.setOpen(!this.state.open)
+    this.setOpen(!this.state.sopenignin)
   }
-  setOpen = (open) => {
+  setOpen = (signin) => {
     this.setState({...this.state, signin})
   }  
   closeDrawer = () => {
     this.setState({...this.state, signin: false})
   }
   render() {
-      let {Users} = this.props.permissions;
-      const store = { ...this.props };
-      return (
-        <div>
+      const styles = {
+          container: {
+            display: 'flex',
+            flexDirection: 'row',
 
+          },
+          content: {
+              flex: '1 1 auto'
+          }
+      }
+
+      return (
+        <div style={styles.container}>
+          <Login style={styles.content} {...this.props} />
+          <SignUpForm style={styles.content} {...this.props} />
         </div>
       );
   }
 }
-
-export default Layout;

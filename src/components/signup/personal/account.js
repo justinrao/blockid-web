@@ -22,7 +22,7 @@ export default class AccountForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: this.props.match.params.userId,
+      id: '',
       password: '',
       password2: '',
       error: ''
@@ -50,9 +50,9 @@ export default class AccountForm extends Component {
     const { classes } = this.props;
     return (
         <div style={ddstyles.root}>
-        <TextField label='E-mail' type="email" value={this.state.id} onChange={this.handleUserIdChange} />
-        <TextField label='Password' errorText={this.state.error} value={this.state.password} type='password' onChange={this.handlePasswordChange} />
-        <TextField label='Confirm Password' type='password' errorText={this.state.error} value={this.state.password2} onChange={this.handlePassword2Change} />
+        <TextField label='E-mail' type="email" value={this.state.id} onChange={this.handleUserIdChange} fullWidth={true}/>
+        <TextField label='Password' errorText={this.state.error} value={this.state.password} type='password' onChange={this.handlePasswordChange} fullWidth={true}/>
+        <TextField label='Confirm Password' type='password' errorText={this.state.error} value={this.state.password2} onChange={this.handlePassword2Change} fullWidth={true}/>
         </div>
     );
   }

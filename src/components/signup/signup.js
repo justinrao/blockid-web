@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import {grey700} from 'material-ui/colors';
 import {PersonalAccountForm} from './index'
+import Card, {CardContent, CardHeader, CardActions} from 'material-ui/Card'
+import Button from 'material-ui/Button'
 
 const ddstyles = {
   floatStyle: {
@@ -12,14 +14,14 @@ const ddstyles = {
     flexWrap: 'wrap',
     flexDirection: 'column',
     margin: 'auto',
-    width: '40%'
+    width: '100%'
   }
 };
 export default class SignUpForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: this.props.match.params.userId,
+      id: '',
       password: '',
       password2: '',
       error: ''
@@ -44,16 +46,17 @@ export default class SignUpForm extends Component {
     }
   }
   render() {
-    let {userId} = this.props.match.params
-    let styles = {
-      fullWidth: true,
-      floatingLabelStyle: ddstyles.floatStyle,
-      underlineStyle: { borderColor: grey700}
-    }
     return (
-        <div>
+      <Card style={ddstyles.root}>
+      <CardHeader title={'bID Sign Up'}/>
+      <CardContent>
         <PersonalAccountForm {...this.props}/>
-        </div>
+        </CardContent>
+        <CardActions>
+            <Button  raised label="Sign Up" fullWidth={true} color="primary" onTouchTap={this.handleLogin} />
+        </CardActions>
+        
+      </Card>
     );
   }
 }
