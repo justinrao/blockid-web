@@ -76,7 +76,7 @@ export default class AddressForm extends Component {
         </SelectField>
             
             <TextField {...styles} floatingLabelText='Postal Code' type='postalcode' errorText={this.state.error} value={this.state.postalcode} onChange={this.handlePostalCodeChange} />
-            <TextField {...styles} floatingLabelText='Country' type='country' errorText={this.state.error} value={this.state.country} onChange={this.handleCountryChange} />
+            <TextField {...styles} floatingLabelText='Country' type='country' errorText={this.state.error} value={this.state.country} onChange={this.handleCountryChange} disabled={true} />
         </div>
     );
   }

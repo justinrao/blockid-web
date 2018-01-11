@@ -44,7 +44,7 @@ export default class InitialForm extends Component {
   handleLastNameChange = (event) => this.setState({ ...this.state, last: event.target.value });
   handlePasswordChange = (event) => this.setState({ ...this.state, password: event.target.value });
   handlePassword2Change = (event) => this.setState({ ...this.state, password2: event.target.value });
-  handleDobChange = (event) => this.setState({ ...this.state, dob: event.target.value });
+  handleDobChange = (event, value) => this.setState({ ...this.state, dob: value });
 
   handleCreate = () => {
     if (this.state.password && this.state.password === this.state.password2) {
