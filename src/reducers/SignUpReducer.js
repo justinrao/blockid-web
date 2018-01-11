@@ -10,6 +10,21 @@ const session = (state = {}, action) => {
       return { ...state, ...action.payload }
       case 'ADD_IMAGE':
         return {}
+        
+      case 'SAVE_ACCOUNT':
+        return {}
+      case 'SUBMIT_ACCOUNT':
+        return {}
+      case 'SAVE_INITIAL':
+        return {}
+      case 'SAVE_ADDRESS':
+        return {}
+      case 'SAVE_IDENTITY':
+        return {}
+      case 'SUBMIT_SIGNUP':
+        return {}
+      case 'SUBMIT_DOCUMENT':
+        return {}
       default:
         return state
     }
