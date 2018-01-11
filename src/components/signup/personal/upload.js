@@ -43,11 +43,7 @@ export default class UploadIdentificationForm extends Component {
   }
   confirmDialog = null
 
-  onDrop = (acceptedFiles) => {
-    console.log('got here', acceptedFiles);
-
-   this.setState({ ...this.state, files: acceptedFiles });
-  }
+  onDrop = (acceptedFiles) => this.setState({ ...this.state, files: acceptedFiles });
 
   render() {
     return (
