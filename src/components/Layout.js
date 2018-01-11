@@ -7,7 +7,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer'
 import {UpdateUser, Users as UsersComp} from './users'
-import {PersonalSignUpForm} from './signup'
+import {PersonalSignUpForm, SignUpForm} from './signup'
 import Login from './Login';
 
 import { Switch, Route} from 'react-router-dom';
@@ -78,7 +78,7 @@ class Layout extends Component {
           <AppBar style={appBarStyle} iconElementRight={<IconButton><Exit /></IconButton>} onLeftIconButtonTouchTap={this.handleToggle} onRightIconButtonTouchTap={this.handleLogout}/>
             <Switch>
               <PropsRoute exact path="/login" component={Login} store={store}></PropsRoute>
-              <PropsRoute exact path="/signup" component={Users} store={store}></PropsRoute>
+              <PropsRoute exact path="/signup" component={SignUpForm} store={store}></PropsRoute>
               <PropsRoute exact path="/signup/personal" component={PersonalSignUpForm} store={store}></PropsRoute>
               <PropsRoute exact path="/signup/personal/:step" component={PersonalSignUpForm} store={store}></PropsRoute>              
               <PropsRoute exact path="/user/add" component={UpdateUser} store={store}></PropsRoute>
