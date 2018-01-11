@@ -5,13 +5,6 @@ export function saveAccountForm({email, password}) {
    }
 }
 
-export function submitAccountForm({email, password}) {
-    return {
-        type: 'SUBMIT_ACCOUNT',
-        payload: {email, password}
-    }
-}
-
 export function saveInitialForm({id, first, middle, phone, last, dob}) {
     return {
         type: 'SAVE_INITIAL',
@@ -30,6 +23,13 @@ export function saveIdentityForm({sin, idNumber, idtype, idExpiry}) {
     return {
         type: 'SAVE_IDENTITY',
         payload: {sin, idNumber, idtype, idExpiry}
+    }
+}
+
+export function submitAccountForm({email, password}) {
+    return {
+        type: 'SUBMIT_ACCOUNT',
+        payload: {email, password}
     }
 }
 
