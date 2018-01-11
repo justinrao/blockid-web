@@ -1,16 +1,5 @@
-const session = (state = {}, action) => {
+const signup = (state = {}, action) => {
     switch (action.type) {
-      case 'ADD_ACCOUNT':
-        return {
-          ...state, ...action.payload       
-        }
-      case 'ADD_ADDRESS':
-        return { ...state, address: action.payload }
-      case 'ADD_IDENTITY':
-      return { ...state, ...action.payload }
-      case 'ADD_IMAGE':
-        return {}
-
       case 'SAVE_ACCOUNT':
       case 'SAVE_INITIAL':
       case 'SAVE_ADDRESS':
@@ -27,4 +16,4 @@ const session = (state = {}, action) => {
     }
   }
   
-  export default session
+  export default signup
