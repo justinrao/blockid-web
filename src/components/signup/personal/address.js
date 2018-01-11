@@ -34,7 +34,7 @@ export default class AddressForm extends Component {
   render() {
     return (
       <div>
-        <div >
+        <div style={styles.containerColumnWrap}>
             <TextField fullWidth={true} label='Address Line 1' type='addressLine1' helperText={this.state.error} value={this.state.addressLine1} onChange={this.handleAddressLine1Change} />
             <TextField fullWidth={true} label='Address Line 2' type='addressLine2' value={this.state.addressLine2} onChange={this.handleAddressLine2Change} />
             <TextField fullWidth={true} label='City' type='city' helperText={this.state.error} value={this.state.city} onChange={this.handleCityChange} />

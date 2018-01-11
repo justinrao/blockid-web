@@ -59,8 +59,8 @@ export default class LandingPage extends Component {
             </div>
         <div style={styles.containerColumn}>
           <Login style={styles.content} {...this.props} />
-          <h3 style={{textAlign: 'center', color: 'white'}}>OR</h3>
-          <SignUpForm style={styles.content} {...this.props} />
+          {/* <h3 style={{textAlign: 'center', color: 'white'}}>OR</h3>
+          <SignUpForm style={styles.content} {...this.props} /> */}
         </div>
         </div>
       );

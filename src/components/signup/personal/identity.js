@@ -4,7 +4,8 @@ import Select from 'material-ui/Select';
 import {MenuItem} from 'material-ui/Menu';
 import {grey700} from 'material-ui/colors';
 import moment from 'moment'
-
+import styles from '../../styles'
+import Button from 'material-ui/Button'
 const ddstyles = {
   floatStyle: {
     color: grey700
@@ -15,7 +16,7 @@ const ddstyles = {
     flexWrap: 'wrap',
     flexDirection: 'column',
     margin: 'auto',
-    width: '40%'
+    width: '100%'
   }
 };
 
@@ -38,7 +39,8 @@ export default class IdentityForm extends Component {
   
   render() {
     return (
-        <div style={ddstyles.root}>
+      <div>
+        <div style={styles.containerColumnWrap}>
         <TextField label='Social Insurance Number (SIN)' value={this.state.sin} onChange={this.handleSinChange} />
         <Select label="Select Type of ID" value={this.state.idtype} style={ddstyles.customWidth} onChange={this.handleIdTypeChange} autoWidth={false}>
               {this.props.store.idtypes.map((g) => {
@@ -54,6 +56,13 @@ export default class IdentityForm extends Component {
           {/* <DatePicker keyboard clearable animateYearScrolling={false} value={this.state.idExpiry} onChange={this.handleIdExpiryChange}/> */}
         </div>
         </div>
+        <div style={styles.actions}>
+        <Button style={styles.action} color="primary" raised>Next</Button>
+
+      </div>        
+        
+        </div>
+        
     );
   }
 }
