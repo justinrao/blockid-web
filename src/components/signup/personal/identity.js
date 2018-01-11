@@ -38,7 +38,7 @@ export default class IdentityForm extends Component {
   handleSinChange = (event) => this.setState({ ...this.state, sin: event.target.value });
   handleIdNumberChange = (event) => this.setState({ ...this.state, idNumber: event.target.value });
   handleIdTypeChange = (event, index, value) => this.setState({ ...this.state, idtype: value });
-  handleIdExpiryChange = (event) => this.setState({ ...this.state, idExpiry: event.target.value });
+  handleIdExpiryChange = (event, value) => this.setState({ ...this.state, idExpiry: value });
   
   render() {
     let {userId} = this.props.match.params
