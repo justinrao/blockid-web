@@ -59,7 +59,7 @@ export default class AddressForm extends Component {
         </Select>
         </FormControl>
             
-            <TextField label='Postal Code' type='postalcode' errorText={this.state.error} value={this.state.postalcode} onChange={this.handlePostalCodeChange} />
+            <TextField label='Postal Code' type='postalcode' helperText="A0A 0A0" errorText={this.state.error} value={this.state.postalcode} onChange={this.handlePostalCodeChange} />
             <TextField label='Country' type='country' errorText={this.state.error} value={this.state.country} onChange={this.handleCountryChange} disabled={true} />
         </div>
     );
