@@ -60,20 +60,20 @@ export default class SignUpForm extends Component {
       }
     });
     return (
-          <div>
-            <div>
+      <div>
+        <div>
           <TextField fullWidth={true} label='First Name' value={this.state.first} onChange={this.handleFirstNameChange} />
           <TextField fullWidth={true} label='Middle Name' value={this.state.middle} onChange={this.handleMiddleNameChange} />
           <TextField fullWidth={true} label='Last Name' value={this.state.last} onChange={this.handleLastNameChange} />
           <TextField fullWidth={true} label='Phone Number' value={this.state.phone} onChange={this.handlePhoneChange} />
           <TextField fullWidth={true} label='Date of Birth' type="date" value={this.state.last} onChange={this.handleDobChange} InputLabelProps={{
-          shrink: true,
-        }}/>
+            shrink: true,
+          }} />
         </div>
         <div style={styles.actions}>
-        <Button style={styles.action} color="primary" raised>Next</Button>
+          <Button style={styles.action} color="primary" raised>Next</Button>
         </div>
-        </div>
+      </div>
 
     );
   }

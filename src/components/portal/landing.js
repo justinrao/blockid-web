@@ -38,6 +38,7 @@ export default class PortalLandingPage extends React.Component {
     const { auth, open } = this.state;
     return (
       <div style={{width: '100%'}}>
+      
         <AppBar style={{background: primary}} position="static">
           <Toolbar>
             <IconButton style={menuButtonStyle} color="contrast" aria-label="Menu">
