@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Dropzone from 'react-dropzone'
-import {grey100,grey700} from 'material-ui/styles/colors';
+import {grey100,grey700} from 'material-ui/colors';
 
 const ddstyles = {
   customWidth: {
