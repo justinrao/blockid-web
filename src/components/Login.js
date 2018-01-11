@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import TextField from 'material-ui/TextField';
 import Button from 'material-ui/Button';
 import Card, {CardActions, CardContent, CardHeader} from 'material-ui/Card';
-
+import styles from './styles'
 const style = {
   root: {
     margin: 'auto',
     width: '100%',
-  }
+  }  
 };
 export default class Login extends Component {
   constructor(props) {
@@ -29,13 +29,13 @@ export default class Login extends Component {
   render() {
     return (
       <Card style={style.root}>
-        <CardHeader title='bID Login'/>
+        <CardHeader style={{textAlign: 'center', background: '#dedede'}} title='SIGN IN'/>
         <CardContent>
-        <TextField ref='username' label='Username or Email' fullWidth={true} value={this.state.userId} onChange={this.handleUserIdChange} /><br />
-        <TextField ref='password' label='Password' fullWidth={true} errorText={this.state.error} value={this.state.password} type='password' onChange={this.handlePasswordChange} />
+          <TextField label='Username or Email' fullWidth={true} value={this.state.userId} onChange={this.handleUserIdChange} /><br />
+          <TextField label='Password' fullWidth={true} value={this.state.password} type='password' onChange={this.handlePasswordChange} />
         </CardContent>
         <CardActions>
-            <Button  raised label="Login" fullWidth={true} color="primary" onTouchTap={this.handleLogin} />
+            <Button style={styles.actionFull} raised color="contrast" onTouchTap={this.handleLogin}>Login</Button>
         </CardActions>
       </Card>
     );

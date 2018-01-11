@@ -1,8 +1,13 @@
+import { push } from 'react-router-redux'
+
 export function saveAccountForm({email, password}) {
-   return {
-       type: 'SAVE_ACCOUNT',
-       payload: {email, password}
-   }
+	return (dispatch) => {
+        dispatch({
+            type: 'SAVE_ACCOUNT',
+            payload: {email, password}
+        })
+        dispatch(push('/signup/personal/0'))
+	}
 }
 
 export function saveInitialForm({id, first, middle, phone, last, dob}) {

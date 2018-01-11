@@ -49,7 +49,7 @@ export default class AccountForm extends Component {
   render() {
     const { classes } = this.props;
     return (
-        <div style={ddstyles.root}>
+        <div>
         <TextField label='E-mail' type="email" value={this.state.id} onChange={this.handleUserIdChange} fullWidth={true}/>
         <TextField label='Password' errorText={this.state.error} value={this.state.password} type='password' onChange={this.handlePasswordChange} fullWidth={true}/>
         <TextField label='Confirm Password' type='password' errorText={this.state.error} value={this.state.password2} onChange={this.handlePassword2Change} fullWidth={true}/>

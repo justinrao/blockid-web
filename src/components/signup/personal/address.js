@@ -5,20 +5,8 @@ import {MenuItem} from 'material-ui/Menu';
 import {grey700} from 'material-ui/colors';
 import { FormControl } from 'material-ui/Form';
 import Input, { InputLabel } from 'material-ui/Input';
-
-const ddstyles = {
-  floatStyle: {
-    color: grey700
-  },
-
-  root: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    flexDirection: 'column',
-    margin: 'auto',
-    width: '40%'
-  }
-};
+import Button from 'material-ui/Button'
+import styles from '../../styles'
 
 export default class AddressForm extends Component {
   constructor(props) {
@@ -45,10 +33,11 @@ export default class AddressForm extends Component {
 
   render() {
     return (
-        <div style={ddstyles.root}>
-            <TextField label='Address Line 1' type='addressLine1' errorText={this.state.error} value={this.state.addressLine1} onChange={this.handleAddressLine1Change} />
-            <TextField label='Address Line 2' type='addressLine2' errorText={this.state.error} value={this.state.addressLine2} onChange={this.handleAddressLine2Change} />
-            <TextField label='City' type='city' errorText={this.state.error} value={this.state.city} onChange={this.handleCityChange} />
+      <div>
+        <div >
+            <TextField fullWidth={true} label='Address Line 1' type='addressLine1' helperText={this.state.error} value={this.state.addressLine1} onChange={this.handleAddressLine1Change} />
+            <TextField fullWidth={true} label='Address Line 2' type='addressLine2' value={this.state.addressLine2} onChange={this.handleAddressLine2Change} />
+            <TextField fullWidth={true} label='City' type='city' helperText={this.state.error} value={this.state.city} onChange={this.handleCityChange} />
             <FormControl>
           <InputLabel htmlFor="province-input">Province</InputLabel>            
             <Select input={<Input name="province" id="province-input" />} value={this.state.province} onChange={this.handleProvinceChange} autoWidth={false}>
@@ -59,9 +48,14 @@ export default class AddressForm extends Component {
         </Select>
         </FormControl>
             
-            <TextField label='Postal Code' type='postalcode' helperText="A0A 0A0" errorText={this.state.error} value={this.state.postalcode} onChange={this.handlePostalCodeChange} />
-            <TextField label='Country' type='country' errorText={this.state.error} value={this.state.country} onChange={this.handleCountryChange} disabled={true} />
+            <TextField fullWidth={true} label='Postal Code' type='postalcode' helperText={this.state.error} value={this.state.postalcode} onChange={this.handlePostalCodeChange} />
+            <TextField fullWidth={true} label='Country' type='country' errorText={this.state.error} value={this.state.country} onChange={this.handleCountryChange} disabled={true} />
         </div>
+        <div style={styles.actions}>
+        <Button style={styles.action} color="primary" raised>Next</Button>
+
+      </div>        
+      </div>        
     );
   }
 }

@@ -33,9 +33,6 @@ const PropsRoute = ({ component, ...rest }) => {
 class Layout extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      open: false
-    };    
     injectTapEventPlugin();
   }
   componentWillMount() {
@@ -46,12 +43,7 @@ class Layout extends Component {
     // if (props.profile.fetchData)
     //   this.props.getData(props.permissions);
   }
-  handleToggle = () => {
-    this.setOpen(!this.state.open)
-  }
-  setOpen = (open) => {
-    this.setState({...this.state, open})
-  }  
+  
   handleLogout = () => {
     this.props.logout();
 
@@ -60,15 +52,12 @@ class Layout extends Component {
     this.setState({...this.state, open: false})
   }
   render() {
-      let {Users} = this.props.permissions;
-      const store = { ...this.props };
+        const store = { ...this.props };
       return (
         <MuiThemeProvider>
         <div>
           <div>
             <Switch>
-              <PropsRoute exact path="/login" component={Login} store={store}></PropsRoute>
-              <PropsRoute exact path="/signup" component={SignUpForm} store={store}></PropsRoute>
               <PropsRoute exact path="/signup/personal" component={PersonalSignUpForm} store={store}></PropsRoute>
               <PropsRoute exact path="/signup/personal/:step" component={PersonalSignUpForm} store={store}></PropsRoute>              
               <PropsRoute exact path="/" component={Landing} store={store}></PropsRoute>

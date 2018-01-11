@@ -5,16 +5,8 @@ import AddressForm from './address';
 import IdentityForm from './identity';
 import UploadIdentificationForm from './upload';
 import Card, {CardContent, CardHeader} from 'material-ui/Card'
-const ddstyles = {
-  customWidth: {
+import styles from '../../styles'
 
-  },
-  root: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    flexDirection: 'column'
-  }
-};
 export default class SignUpForm extends Component {
   constructor(props) {
     super(props);
@@ -84,15 +76,21 @@ export default class SignUpForm extends Component {
         </Step.Group>
     )
     return (
-        <Card >
-        <CardContent style={ddstyles.root}>
-         {header}
+      <div style={styles.mainContainer}>
+        <div style={styles.info}>
+        
+        </div>
+        <Card>
+        <CardContent style={styles.containerColumnWrap}>
+          {header}    
+        
           {this.state.step === 0 && <InitialForm {...this.props}/>}
           {this.state.step === 1 && <AddressForm {...this.props}/>}
           {this.state.step === 2 && <IdentityForm {...this.props}/>}
           {this.state.step === 3 && <UploadIdentificationForm {...this.props}/>}
         </CardContent>
       </Card>
+      </div>
         );
   }
 }

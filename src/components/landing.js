@@ -2,9 +2,10 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 
 import {SignUpForm} from './signup'
-import Card, {CardContent} from 'material-ui/Card'
+import Card, {CardHeader, CardContent} from 'material-ui/Card'
 
 import Login from './Login';
+import styles from './styles'
 
 import { Switch, Route} from 'react-router-dom';
 
@@ -47,21 +48,20 @@ export default class LandingPage extends Component {
     this.setState({...this.state, signin: false})
   }
   render() {
-      const styles = {
-          container: {
-            display: 'flex',
-            flexDirection: 'row',
-
-          },
-          content: {
-              flex: '1 1 auto'
-          }
-      }
-
       return (
-        <div style={styles.container}>
+        <div style={styles.mainContainer}>
+            <div style={styles.info}>
+              <h2>block ID</h2>
+              <h4>Advanced Block Chain Id for idenity verification</h4>
+              <ul style={{textAlign: 'left'}}>
+                  <li>Secured with Blockchain technology</li>
+              </ul>
+            </div>
+        <div style={styles.containerColumn}>
           <Login style={styles.content} {...this.props} />
+          <h3 style={{textAlign: 'center', color: 'white'}}>OR</h3>
           <SignUpForm style={styles.content} {...this.props} />
+        </div>
         </div>
       );
   }
