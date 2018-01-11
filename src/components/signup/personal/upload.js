@@ -6,6 +6,7 @@ import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import ConfirmDialog from '../../utils/ConfirmDialog'
 import {Card, CardActions, CardTitle, CardText} from 'material-ui/Card';
+import Dropzone from 'react-dropzone'
 
 const ddstyles = {
   customWidth: {
@@ -27,31 +28,18 @@ export default class UploadIdentificationForm extends Component {
       phone: '',
       password: '',
       password2: '',
-      error: ''
+      error: '',
+      files: []
     };
   }
   confirmDialog = null
 
-  handleUserIdChange = (event) => this.setState({ ...this.state, id: event.target.value });
-  handleFirstNameChange = (event) => this.setState({ ...this.state, first: event.target.value });
-  handleMiddleNameChange = (event) => this.setState({ ...this.state, middle: event.target.value });
-  handlePhoneChange = (event) => this.setState({ ...this.state, phone: event.target.value });
-  handleLastNameChange = (event) => this.setState({ ...this.state, last: event.target.value });
-  handlePasswordChange = (event) => this.setState({ ...this.state, password: event.target.value });
-  handlePassword2Change = (event) => this.setState({ ...this.state, password2: event.target.value });
+  onDrop = (acceptedFiles) => {
+    console.log('got here', acceptedFiles);
 
-  handleCreate = () => {
-    if (this.state.password && this.state.password === this.state.password2) {
-        this.setState({ ...this.state, error: '' })
-        this.props.store.addUser(this.state)
-    } else {
-      if (this.state.password) {
-        this.setState({ ...this.state, error: 'Please enter a password.' })
-      } else {
-        this.setState({ ...this.state, error: 'Passwords do not match.' })
-      }
-    }
+   this.setState({ ...this.state, files: acceptedFiles });
   }
+
   render() {
     let {userId} = this.props.match.params
     let actions = []
@@ -66,22 +54,16 @@ export default class UploadIdentificationForm extends Component {
     }
     actions.push(<RaisedButton key={actions.length} label="Cancel" secondary={true} containerElement={<Link to="/" />} />)
     return (
-        <Card style={ddstyles.root}>
-        <CardTitle title='bID Sign Up - Personal Account'/>
-        <CardText>
-          <div>
-          <TextField floatingLabelText='E-mail' value={this.state.id} onChange={this.handleUserIdChange} disabled={userId && true} /><br />
-          <TextField floatingLabelText='Phone Number' value={this.state.phone} onChange={this.handleUserIdChange} disabled={userId && true} /><br />
-          <TextField floatingLabelText='First Name' value={this.state.first} onChange={this.handleFirstNameChange} /><br/>
-          <TextField floatingLabelText='Middle Name' value={this.state.middle} onChange={this.handleMiddleNameChange} /><br/>
-          <TextField floatingLabelText='Last Name' value={this.state.last} onChange={this.handleLastNameChange} /><br />
-          <br />
-          <TextField floatingLabelText='Password' errorText={this.state.error} value={this.state.password} type='password' onChange={this.handlePasswordChange} /><br/>
-            <TextField floatingLabelText='Confirm Password' type='password' errorText={this.state.error} value={this.state.password2} onChange={this.handlePassword2Change} /><br />
-          <br />
-        </div>
-      </CardText>
-      </Card>
+      <div style={ddstyles.root}>
+        <Dropzone onDrop={this.onDrop.bind(this)}>
+              <p>Try dropping some files here, or click to select files to upload.</p>
+              {
+                this.state.files.map((file) => {
+                  return <img src={file.preview} key={file.name} alt={file.name} />
+                })
+              }
+        </Dropzone>
+      </div>
     );
   }
 }

@@ -5,6 +5,7 @@ import { Step, Icon } from 'semantic-ui-react'
 import InitialForm from './initial';
 import AddressForm from './address';
 import IdentityForm from './identity';
+import UploadIdentificationForm from './upload';
 
 const ddstyles = {
   customWidth: {
@@ -99,6 +100,7 @@ export default class SignUpForm extends Component {
           {this.state.step === 0 && <InitialForm {...this.props}/>}
           {this.state.step === 1 && <AddressForm {...this.props}/>}
           {this.state.step === 2 && <IdentityForm {...this.props}/>}
+          {this.state.step === 3 && <UploadIdentificationForm {...this.props}/>}
         </div>
       </div>
         );
