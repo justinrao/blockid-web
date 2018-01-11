@@ -57,5 +57,3 @@ export class User {
         return request('DeleteUser', {id})
     }
 }
-
-submitDocument
