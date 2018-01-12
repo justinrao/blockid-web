@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { relative, isAbsolute } from 'path';
+import Typography from 'material-ui/Typography'
+import styles from '../../styles'
 
 const ddstyles = {
   customWidth: {
@@ -43,11 +45,10 @@ export default class ContactList extends Component {
   render() {
     return (
       <div>
-   <Toolbar>
-      <ToolbarGroup>
-        <ToolbarTitle text="Contacts" />
-      </ToolbarGroup>
-    </Toolbar>          
+   <Typography type="title" style={styles.content}>
+   Audit
+ </Typography>       
+
           
       </div>
     );

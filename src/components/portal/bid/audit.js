@@ -45,11 +45,9 @@ export default class AuditList extends Component {
   render() {
     return (
       <div>
-   <Toolbar>
    <Typography type="title" style={styles.content}>
             Audit
           </Typography>       
-    </Toolbar>          
       </div>
     );
   }

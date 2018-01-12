@@ -1,47 +1,33 @@
 import React, { Component } from 'react';
 import { relative, isAbsolute } from 'path';
+import {AuditList} from '.'
+import Typography from 'material-ui/Typography'
+import styles from '../../styles'
 
-const ddstyles = {
-  customWidth: {
-
-  },
-  root: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    flexDirection: 'column',
-    margin: 'auto',
-    width: '40%'
-
-  },
-  dropzone: {
-    width: '100%',
-    background: '#EFEFEF',
-    border: '2px dashed',
-    borderColor: '#212121',
-    minHeight: '345',
-    textAlign: 'center',
-  },
-  dropzoneThumb: {
-    maxWidth: '90%',
-    marginTop: '10',
-    marginBottom: '10'
-  },
-  dropzoneHeader: {
-    fontSize: '1.1em',
-    marginTop: '10',
-  }
-};
 export default class BidView extends Component {
   constructor(props) {
     super(props);
+    const {bid, view} = this.props.match.params;
     this.state = {
-      error: '',
-    };
+        bid,
+        view,
+        auth: true,
+        user: {
+            name: 'John Smith',
+        },
+        open: false
+      };        
+
   }
 
   render() {
     return (
       <div>
+         {this.state.view === 'audit' && ( <AuditList {...this.props}></AuditList>)}
+         {this.state.view === 'checklist' && ( <AuditList {...this.props}></AuditList>)}
+         {this.state.view === 'contacts' && ( <AuditList {...this.props}></AuditList>)}
+         {this.state.view === 'documents' && ( <AuditList {...this.props}></AuditList>)}
+         {this.state.view === 'subsidiaries' && ( <AuditList {...this.props}></AuditList>)}          
       </div>
     );
   }

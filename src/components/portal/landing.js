@@ -13,7 +13,7 @@ import Menu, { MenuItem } from 'material-ui/Menu';
 import styles, {primary} from '../styles';
 import SearchBar from '../utils/SearchBar'
 import {PropsRoute} from '../Layout'
-import AuditList from './bid/audit';
+import {BidView} from './bid';
 
 const menuButtonStyle = {
     marginLeft: -12,
@@ -21,13 +21,19 @@ const menuButtonStyle = {
 };
 
 export default class PortalLandingPage extends React.Component {
-  state = {
-    auth: true,
-    user: {
-        name: 'John Smith',
-    },
-    open: false
-  };
+    constructor(props) {
+        super(props);
+        const {bid, view} = this.props.match.params;
+        this.state = {
+            bid,
+            view,
+            auth: true,
+            user: {
+                name: 'John Smith',
+            },
+            open: false
+          };        
+    }
 
   handleMenu = event => {
     this.setState({ open: !this.state.open });
@@ -81,9 +87,7 @@ export default class PortalLandingPage extends React.Component {
             )}
           </Toolbar>
         </AppBar>
-        <Switch>
-            <PropsRoute exact path="/portal/:bid/audit" component={AuditList} store={this.props.store}></PropsRoute>
-        </Switch>        
+        { this.state.bid && (<BidView {...this.props} />)}           
       </div>
     );
   }

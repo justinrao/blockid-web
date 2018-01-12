@@ -63,6 +63,7 @@ class Layout extends Component {
               <PropsRoute exact path="/signup/personal/:step" component={PersonalSignUpForm} store={store}></PropsRoute>              
               <PropsRoute exact path="/" component={Landing} store={store}></PropsRoute>
               <PropsRoute exact path="/portal" component={PortalLanding} store={store}></PropsRoute>
+              <PropsRoute exact path="/portal/:bid/:view" component={PortalLanding} store={store}></PropsRoute>
             </Switch>
         </div>
       </div>
