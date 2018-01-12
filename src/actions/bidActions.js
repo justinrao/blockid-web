@@ -25,7 +25,7 @@ export function findBid(search) {
 	return (dispatch) => {
 		return BidApi.find({search}).then((clients) => {
             dispatch(gotBids(clients))
-            dispatch(push('/portal/bids'))
+            dispatch(push('/portal/' + search))
 		}).catch((err) => {
 
 		})

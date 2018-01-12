@@ -12,25 +12,70 @@ import { FormControlLabel, FormGroup } from 'material-ui/Form';
 import Menu, { MenuItem } from 'material-ui/Menu';
 import styles, {primary} from '../styles';
 import Card, { CardContent } from 'material-ui/Card';
-import {Check} from 'material-ui-icons';
+import {Check, Search, Clear} from 'material-ui-icons';
 import CardActions from 'material-ui/Card/CardActions';
 import Button from 'material-ui/Button'
 import { Link } from 'react-router-dom';
-
+import Input, { InputLabel, InputAdornment } from 'material-ui/Input';
+import FormControl from 'material-ui/Form/FormControl';
 export default class AccessRequest extends React.Component {
   constructor(props) {
     super(props);
-    this.props.store.getBids();
+    const {search} = props.match.params;
+    if (!!search) {
+      this.props.store.findBid(search);
+    }
+    this.state = {
+      search: search || ''
+    }
   }
 
   handleAccess = (bid) => {
     this.props.store.requestAccess(bid);
   }
 
+  handleSearchChange = (event) => this.setState({ ...this.state, search: event.target.value });
+  clearSearch = () => {
+    this.setState({ ...this.state, search: '' });
+  }
+
+  handleSearchKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      this.doSearch();
+      event.preventDefault();
+    } else if (event.key === 'Escape') {
+      this.clearSearch();
+      event.preventDefault();
+    }
+
+  }
+
+  doSearch = (event) => {
+    this.props.store.findBid(this.state.search);
+  }
   render() {
     const companies = this.props.store.bids || [];
     return (
       <div style={styles.containerWrap}>
+
+        <FormControl fullWidth={true}>
+          {/* <InputLabel htmlFor="search">Search</InputLabel> */}
+          <Input
+            id="adornment-search"
+            placeholder="Search for Company"
+            value={this.state.search}
+            onChange={this.handleSearchChange}
+            onKeyPress={this.handleSearchKeyPress}
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton>
+                  {!this.state.search ? <Search onClick={this.doSearch}/> : <Clear onClick={this.clearSearch}/>}
+                </IconButton>
+              </InputAdornment>
+            }
+          />
+        </FormControl>
+
       { companies.map(company => {
         return (<Card style={styles.info} key={`company-${company.clientBID}`}>
         <CardContent style={styles.container}>
