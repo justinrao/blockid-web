@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { relative, isAbsolute } from 'path';
-import {AuditList} from '.'
+import {AuditList, Checklist} from '.'
 import Typography from 'material-ui/Typography'
 import styles from '../../styles'
 
@@ -24,7 +24,7 @@ export default class BidView extends Component {
     return (
       <div>
          {this.state.view === 'audit' && ( <AuditList {...this.props}></AuditList>)}
-         {this.state.view === 'checklist' && ( <AuditList {...this.props}></AuditList>)}
+         {this.state.view === 'checklist' && ( <Checklist {...this.props}></Checklist>)}
          {this.state.view === 'contacts' && ( <AuditList {...this.props}></AuditList>)}
          {this.state.view === 'documents' && ( <AuditList {...this.props}></AuditList>)}
          {this.state.view === 'subsidiaries' && ( <AuditList {...this.props}></AuditList>)}          
