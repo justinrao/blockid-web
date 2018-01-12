@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { relative, isAbsolute } from 'path';
+import List, {ListItem, ListItemText} from 'material-ui/List';
+import {Check} from 'material-ui-icons';
 
 const ddstyles = {
   customWidth: {
@@ -13,35 +15,29 @@ const ddstyles = {
     width: '40%'
 
   },
-  dropzone: {
-    width: '100%',
-    background: '#EFEFEF',
-    border: '2px dashed',
-    borderColor: '#212121',
-    minHeight: '345',
-    textAlign: 'center',
-  },
-  dropzoneThumb: {
-    maxWidth: '90%',
-    marginTop: '10',
-    marginBottom: '10'
-  },
-  dropzoneHeader: {
-    fontSize: '1.1em',
-    marginTop: '10',
-  }
 };
 export default class Checklist extends Component {
   constructor(props) {
     super(props);
     this.state = {
       error: '',
+      checklist: [
+        {label: 'Label', audit: 'Audit Info'}
+      ]
     };
   }
 
   render() {
     return (
-      <div>
+      <div styles="ddstyles.root">
+        {this.state.checklist.length > 0 && 
+          <List>
+          {this.state.checklist.map((item) => {
+                return <ListItem><Check /><ListItemText primary={item.label} secondary={item.audit}/></ListItem>
+              })
+              }
+          </List>          
+        }
       </div>
     );
   }

@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { relative, isAbsolute } from 'path';
 import Typography from 'material-ui/Typography'
 import styles from '../../styles'
+import List, {ListItem, ListItemText} from 'material-ui/List';
+import Avatar from 'material-ui/Avatar';
+import {SettingsPhone} from 'material-ui-icons';
 
 const ddstyles = {
   customWidth: {
@@ -13,42 +16,35 @@ const ddstyles = {
     flexDirection: 'column',
     margin: 'auto',
     width: '40%'
-
-  },
-  dropzone: {
-    width: '100%',
-    background: '#EFEFEF',
-    border: '2px dashed',
-    borderColor: '#212121',
-    minHeight: '345',
-    textAlign: 'center',
-  },
-  dropzoneThumb: {
-    maxWidth: '90%',
-    marginTop: '10',
-    marginBottom: '10'
-  },
-  dropzoneHeader: {
-    fontSize: '1.1em',
-    marginTop: '10',
   }
 };
-export default class ContactList extends Component {
+export default class Contacts extends Component {
   constructor(props) {
     super(props);
     this.state = {
       error: '',
-      contacts: []
+      contacts: [
+        {label: "Doe, Jamie - Compliance", audit: "Last updated: Dec 14, 2010"},
+        {label: "Vedder, Evan - Legal", audit: "Last updated: Feb 10, 2015"}
+      ]
     };
   }
 
   render() {
     return (
       <div>
-   <Typography type="title" style={styles.content}>
-   Contacts
- </Typography>       
-
+        <Typography type="title" style={styles.content}>
+          Contact List
+        </Typography>       
+        {this.state.contacts.length > 0 && 
+          <List>
+          {this.state.contacts.map((item) => {
+                return <ListItem button><Avatar><SettingsPhone /></Avatar><ListItemText primary={item.label} secondary={item.audit}/></ListItem>
+              })
+              }
+          </List>          
+        }
+        
           
       </div>
     );
