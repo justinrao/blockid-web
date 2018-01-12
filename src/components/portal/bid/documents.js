@@ -23,15 +23,12 @@ export default class DocumentsList extends Component {
         { "$class": "com.rbc.bid.Document", "documentId": "2347", "documentType": "CERTIFICATE_OF_INCORPORATION", "content": "Exercitation sunt.", "updatedBy": "Ullamco labore eiusmod.", "expiryDate": "Proident ea ex et eu." }
       ]
     };
+    console.log(this.props.store.documentType)
   }
 
   render() {
     return (
       <div>
-   <Typography type="title" style={styles.content}>
-   Documents
- </Typography>       
-
         {this.state.documents.length > 0 && 
           this.state.documents.map((d) => {
           return (

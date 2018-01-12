@@ -41,8 +41,7 @@ export default class RiskRating extends Component {
 
   render() {
     return (
-      <div>
-      </div>
+      <div>Risk Rating </div>
     );
   }
 }

@@ -48,11 +48,11 @@ export default class BidView extends Component {
     const client = this.props.store.bid || {};
     return (
       <div style={styles.containerColumn}>
-        <div style={{...styles.contrastGrey}}>
+        <div style={styles.contrastGrey}>
           <CompanyInfo client={this.state.client}/>
           <RiskRating rating={this.state.client.riskRating}/>
           </div>
-          <Tabs style={styles.secondaryBackground}
+          <Tabs style={styles.contrastBackground}
             value={view || 'checklist'}
             fullWidth
           >

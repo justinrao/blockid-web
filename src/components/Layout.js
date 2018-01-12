@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import {PersonalSignUpForm, SignUpForm} from './signup'
@@ -55,7 +55,7 @@ class Layout extends Component {
   render() {
         const store = { ...this.props };
       return (
-        <MuiThemeProvider>
+        <MuiThemeProvider theme={createMuiTheme()}>
         <div>
           <div>
             <Switch>
