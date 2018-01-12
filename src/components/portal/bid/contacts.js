@@ -43,6 +43,12 @@ export default class ContactList extends Component {
   render() {
     return (
       <div>
+   <Toolbar>
+      <ToolbarGroup>
+        <ToolbarTitle text="Contacts" />
+      </ToolbarGroup>
+    </Toolbar>          
+          
       </div>
     );
   }

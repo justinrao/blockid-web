@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { relative, isAbsolute } from 'path';
-
+import Toolbar from 'material-ui/Toolbar'
+import Typography from 'material-ui/Typography';
+import styles from '../../styles'
 const ddstyles = {
   customWidth: {
 
@@ -43,6 +45,11 @@ export default class AuditList extends Component {
   render() {
     return (
       <div>
+   <Toolbar>
+   <Typography type="title" style={styles.content}>
+            Audit
+          </Typography>       
+    </Toolbar>          
       </div>
     );
   }

@@ -43,6 +43,12 @@ export default class DocumentsList extends Component {
   render() {
     return (
       <div>
+   <Toolbar>
+      <ToolbarGroup>
+        <ToolbarTitle text="Documents" />
+      </ToolbarGroup>
+    </Toolbar>          
+          
       </div>
     );
   }

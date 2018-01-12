@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { relative, isAbsolute } from 'path';
-
+import Toolbar, {ToolbarGroup, ToolbarTitle} from 'material-ui/Toolbar'
 const ddstyles = {
   customWidth: {
 
@@ -43,6 +43,12 @@ export default class SubsidiariesList extends Component {
   render() {
     return (
       <div>
+   <Toolbar>
+      <ToolbarGroup>
+        <ToolbarTitle text="Subsidiaries" />
+      </ToolbarGroup>
+    </Toolbar>          
+          
       </div>
     );
   }

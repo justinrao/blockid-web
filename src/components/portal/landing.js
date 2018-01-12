@@ -12,6 +12,8 @@ import { FormControlLabel, FormGroup } from 'material-ui/Form';
 import Menu, { MenuItem } from 'material-ui/Menu';
 import styles, {primary} from '../styles';
 import SearchBar from '../utils/SearchBar'
+import {PropsRoute} from '../Layout'
+import AuditList from './bid/audit';
 
 const menuButtonStyle = {
     marginLeft: -12,
@@ -79,6 +81,9 @@ export default class PortalLandingPage extends React.Component {
             )}
           </Toolbar>
         </AppBar>
+        <Switch>
+            <PropsRoute exact path="/portal/:bid/audit" component={AuditList} store={this.props.store}></PropsRoute>
+        </Switch>        
       </div>
     );
   }
