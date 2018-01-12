@@ -33,10 +33,10 @@ export function getProfile() {
 export class BidApi {
 
     static get(id) {
-        return request('GetUsers', id);
+        return request('clients/${bid}', id);
     }
-    static find(request) {
-        return request('CreateUser', request)
+    static find(search) {
+        return request('clients')
     }
 
 	static getAuditLog(bid) {
