@@ -23,7 +23,7 @@ export function getBids() {
 }
 export function findBid(search) {
 	return (dispatch) => {
-		return BidApi.find({search}).then((clients) => {
+		return BidApi.find(search).then((clients) => {
             dispatch(gotBids(clients))
             dispatch(push('/portal/' + search))
 		}).catch((err) => {
