@@ -12,6 +12,7 @@ const bid = (state = {}, action) => {
   export default bid
 
   export const bids = (state = [], action) => {
+    let i
     switch (action.type) {
       case 'GOT_BIDS':
         console.log(state, action.type, action.payload);
