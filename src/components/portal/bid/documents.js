@@ -42,13 +42,16 @@ export default class DocumentsList extends Component {
           />
           <CardContent>
             <Typography type="headline" component="h2">
-              {this.store.documentType[`${d.documentType}`]}
+              {d.documentType}
             </Typography>
             <Typography component="p">
               {d.content}
             </Typography>
             <Typography component="p">
-              Updated by: {d.updatedBy}, Expires: {d.expiryDate}
+              Updated by: {d.updatedBy}
+            </Typography>
+            <Typography component="p">
+              Expires: {d.expiryDate}
             </Typography>
           </CardContent>
           <CardActions>

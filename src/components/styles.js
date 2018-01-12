@@ -64,15 +64,16 @@ const styles = {
         ...flex,
 
         background: primary,
-        padding: 60,
+        padding: 64,
         alignItems: 'center',
         alignContent: 'center'
       },
     containerWrap: {
         ...flex,
         ...flexWrap,
-        background: primary,
-        padding: 60,
+        paddingTop: 32,
+        paddingLeft: 32,
+        paddingRight: 32,
         alignItems: 'center',
         alignContent: 'center'
       },
