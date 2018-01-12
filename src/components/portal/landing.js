@@ -59,8 +59,8 @@ export default class PortalLandingPage extends React.Component {
               bID Portal
             </Typography>
             {auth && (
-                <div style={styles.container}>
-                <SearchBar searchTitle="Search" style={styles.content}/>
+                <div>
+                {/* <SearchBar searchTitle="Search" style={styles.content}/> */}
                 <IconButton
                   aria-owns={this.state.open ? 'menu-appbar' : null}
                   aria-haspopup="true"
