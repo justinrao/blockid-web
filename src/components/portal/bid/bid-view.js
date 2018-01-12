@@ -31,8 +31,15 @@ export default class BidView extends Component {
 
   }
 
+  componentWillMount() {
+    if (this.props.match.params.bid) {
+    //   this.props.store.getBid(this.props.match.params.bid);
+    }
+  }
+
   render() {
     const {bid, view} = this.props.match.params;
+    const client = this.props.store.bid || {};
     return (
       <div style={styles.containerColumn}>
         <div style={{...styles.contrastGrey}}>

@@ -78,7 +78,7 @@ const styles = {
       },
     info: {
         padding: 16,
-        flex: '1 1 50%',
+        flex: '1 1 auto',
       },
     main: {
         color: white,

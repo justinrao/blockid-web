@@ -24,6 +24,7 @@ if (session) {
 }
 const defaultState = {
     users: [],
+    bid: {},
     session: {},
     router: {},
     provinces: [

@@ -42,6 +42,16 @@ export function getProfile() {
     return Promise.resolve({});
 }
 
+export class BidApi {
+
+    static get(id) {
+        return request('GetUsers', id);
+    }
+    static find(request) {
+        return request('CreateUser', request)
+    }
+}
+
 export class User {
 
     static get() {
