@@ -51,10 +51,13 @@ export default class LandingPage extends Component {
       return (
         <div style={styles.mainContainer}>
             <div style={styles.info}>
-              <h2>block ID</h2>
-              <h4>Advanced Block Chain Id for idenity verification</h4>
-              <ul style={{textAlign: 'left'}}>
-                  <li>Secured with Blockchain technology</li>
+              <h1>RBC bID</h1>
+              <h3>Centralized client identification</h3>
+              <ul style={{textAlign: 'left', listStyleType: 'circle'}}>
+                  <li>Secure
+                  <ul style={{textAlign: 'left', listStyleType: 'circle'}}><li>Fast
+                  <ul style={{textAlign: 'left', listStyleType: 'circle'}}><li>Reliable
+                  <ul style={{textAlign: 'left', listStyleType: 'circle'}}><li>Audit chain</li></ul></li></ul></li></ul></li>
               </ul>
             </div>
         <div style={styles.containerColumn}>
