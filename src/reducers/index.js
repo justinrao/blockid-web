@@ -4,7 +4,7 @@ import { routerReducer } from 'react-router-redux'
 import users from './UserReducer'
 import session from './SessionReducer'
 import signup from './SignUpReducer'
-import bid from './BidReducer'
+import bid, {bids} from './BidReducer'
 
 const emptyReducer = (state = [], action) => {
     return state;
@@ -15,6 +15,7 @@ const rootReducer = combineReducers({
 	users,
 	signup,
 	bid,
+	bids,
 	idtypes: emptyReducer,
 	documentTypes: emptyReducer,
 	riskRating: emptyReducer,

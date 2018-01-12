@@ -4,7 +4,7 @@ import data from '../data/data.json'
 
 export function getBid(clientBid) {
 	return (dispatch) => {
-        client = data.clients.find((client) => client.clientBid === clientBid);
+        const client = data.clients.find((client) => client.clientBid === clientBid);
         dispatch(gotBid(client))
 		// return BidApi.get().then((client) => {
 		// 	dispatch(gotBid(client))
@@ -17,7 +17,7 @@ export function getBid(clientBid) {
 export function findBid(search) {
 	return (dispatch) => {
 		return BidApi.find({search}).then((clients) => {
-            dispatch(gotBids(client))
+            dispatch(gotBids(clients))
             dispatch(push('/portal/bids'))
 		}).catch((err) => {
 
