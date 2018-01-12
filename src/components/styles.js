@@ -3,6 +3,8 @@ import {white} from 'material-ui/colors';
 export const primary = '#00BCd4'
 export const secondary = '#007ac1'
 
+export const contrastGrey = '#dedede'
+
 const flex = {
     display: 'flex',
     flex: '1 1 auto'
@@ -31,11 +33,18 @@ const styles = {
         background: white,
         color: '#212121'
     },
+    left: {
+        textAlign: 'left'
+    },
     contrastForeground: {
         color: white,
     },
     primaryBackground: {
         background: primary,
+    },
+    primary: {
+        background: primary,
+        color: white
     },
     primaryForeground: {
         color: primary,
@@ -45,6 +54,10 @@ const styles = {
     },
     secondaryForeground: {
         color: white,
+    },
+    contrastGrey: {
+        background: contrastGrey,
+        padding: 24
     },
     container: flex,
     mainContainer: {
@@ -64,6 +77,10 @@ const styles = {
         alignContent: 'center'
       },
     info: {
+        padding: 16,
+        flex: '1 1 50%',
+      },
+    main: {
         color: white,
         background: primary,
         padding: 16,
