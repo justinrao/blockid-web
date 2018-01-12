@@ -1,48 +1,82 @@
 import React, { Component } from 'react';
 import { relative, isAbsolute } from 'path';
+import List from 'material-ui/List/List';
+import ListItem from 'material-ui/List/ListItem';
+import ListItemText from 'material-ui/List/ListItemText';
+import Divider from 'material-ui/Divider'
+import styles from '../../styles'
 
-const ddstyles = {
-  customWidth: {
-
-  },
-  root: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    flexDirection: 'column',
-    margin: 'auto',
-    width: '40%'
-
-  },
-  dropzone: {
-    width: '100%',
-    background: '#EFEFEF',
-    border: '2px dashed',
-    borderColor: '#212121',
-    minHeight: '345',
-    textAlign: 'center',
-  },
-  dropzoneThumb: {
-    maxWidth: '90%',
-    marginTop: '10',
-    marginBottom: '10'
-  },
-  dropzoneHeader: {
-    fontSize: '1.1em',
-    marginTop: '10',
-  }
-};
 export default class CompanyInfo extends Component {
   constructor(props) {
     super(props);
+
+    this.labels = {
+      'legalName': 'Legal Entity Name',
+      'holdingCompany': 'Holding Company',
+      'legalAddress': 'Legal Address',
+      'countryOfIncorporation': 'Country of Incorporation',
+      'dateOfIncorporation': 'Date of Incorporation',
+    }
     this.state = {
       error: '',
+      legalName: 'Some Company',
+      holdingCompany: 'Holding company',
+      legalAddress: {
+        addressLine1: '155 Wellington Avenue W',
+        city: 'Toronto',
+        province: 'Ontario',
+        country: 'Canada'
+      },
+      countryOfIncorporation: 'Canada',
+      dateOfIncorporation: '2015-01-01'
     };
   }
-
   render() {
+    const labelStyle = {
+      flexBasis: '40%',
+      flexGrow: 'unset'
+    }
     return (
       <div>
-          <h2>Company Information</h2>
+        <h2>Company Information</h2>
+
+        <div style={styles.container}>
+        <List style={styles.info}>
+          <ListItem>
+            <ListItemText style={labelStyle} primary={this.labels.legalName} />
+            <ListItemText style={styles.left} primary={this.state.legalName} />
+          </ListItem>
+          <Divider/>
+          <ListItem >
+            <ListItemText style={labelStyle} primary={this.labels.holdingCompany} />
+            <ListItemText style={styles.left} primary={this.state.holdingCompany} />
+          </ListItem>
+          <Divider/>
+          <ListItem >
+            <ListItemText style={labelStyle} primary={this.labels.countryOfIncorporation} />
+            <ListItemText style={styles.left} primary={this.state.countryOfIncorporation} />
+          </ListItem>
+          <Divider/>
+          <ListItem >
+            <ListItemText style={labelStyle} primary={this.labels.dateOfIncorporation} />
+            <ListItemText style={styles.left} primary={this.state.dateOfIncorporation} />
+          </ListItem>
+          <Divider/>
+        <ListItem >
+        <ListItemText style={labelStyle} primary={this.labels.legalAddress} />
+        <ListItemText primary={(
+          <div>
+          <div>{this.state.legalAddress.addressLine1}</div>
+          <div>{this.state.legalAddress.addressLine2}</div>
+          <div>{this.state.legalAddress.city}, {this.state.legalAddress.province}</div>
+          <div>{this.state.legalAddress.country}</div>
+          <div>{this.state.legalAddress.postalCode}</div>
+          </div>
+        )} />            
+      </ListItem>
+      <Divider/>
+        </List>
+        </div>        
       </div>
     );
   }

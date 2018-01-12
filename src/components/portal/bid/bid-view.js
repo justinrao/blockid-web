@@ -6,6 +6,15 @@ import styles from '../../styles'
 import Tabs, {Tab} from 'material-ui/Tabs'
 import Link from 'react-router-dom/Link';
 
+const muiStyles = theme => ({
+    root: {
+      flexGrow: 1,
+      marginTop: theme.spacing.unit * 3,
+      backgroundColor: theme.palette.background.paper,
+    },
+  });
+
+  
 export default class BidView extends Component {
   constructor(props) {
     super(props);
@@ -25,10 +34,12 @@ export default class BidView extends Component {
   render() {
     const {bid, view} = this.props.match.params;
     return (
-      <div>
-          <CompanyInfo />
+      <div style={styles.containerColumn}>
+        <div style={{...styles.contrastGrey}}>
+          <CompanyInfo/>
           <RiskRating />
-          <Tabs style={styles.contrastBackground}
+          </div>
+          <Tabs style={styles.secondaryBackground}
             value={view || 'checklist'}
             fullWidth
           >
