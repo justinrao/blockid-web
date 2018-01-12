@@ -29,7 +29,7 @@ export default class Checklist extends Component {
 
   render() {
     return (
-      <div styles="ddstyles.root">
+      <div style={ddstyles.root}>
         {this.state.checklist.length > 0 && 
           <List>
           {this.state.checklist.map((item) => {

@@ -1,0 +1,36 @@
+{
+    "clients": [
+        {
+            "clientBID": "",
+            "legalName": "",
+            "holdingCompany": "",
+            "legalAddress": {
+                "addressLine1": "",
+                "addressLine2": "",
+                "city": "",
+                "province": "",
+                "country": "",
+                "postalCode": ""
+            },
+            "countryOfIncorporation": "",
+            "dateOfIncorporation": "",
+            "contact": {
+                "contactPersonalName": "",
+                "phoneNumber": "",
+                "contactAddress": {
+                    "addressLine1": "",
+                    "addressLine2": "",
+                    "city": "",
+                    "province": "",
+                    "country": "",
+                    "postalCode": ""
+                }
+            },
+            "riskRating": "",
+            "status": "",
+            "documents": [],
+            "directors": [],
+            "updatedBy": ""
+        }
+    ]
+}

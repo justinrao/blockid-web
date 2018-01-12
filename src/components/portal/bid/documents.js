@@ -29,9 +29,9 @@ export default class DocumentsList extends Component {
   render() {
     return (
       <div>
-        <Typography type="title">
-          Documents
-        </Typography>       
+   <Typography type="title" style={styles.content}>
+   Documents
+ </Typography>       
 
         {this.state.documents.length > 0 && 
           this.state.documents.map((document) => {

@@ -16,7 +16,7 @@ export default class SubsidiariesList extends Component {
     return (
       <div>
    <Typography type="title" style={styles.content}>
-   Audit
+   Subsidiaries
  </Typography>       
 
           

@@ -42,6 +42,7 @@ export default class CompanyInfo extends Component {
   render() {
     return (
       <div>
+          <h2>Company Information</h2>
       </div>
     );
   }

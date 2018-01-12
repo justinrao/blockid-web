@@ -14,6 +14,9 @@ const rootReducer = combineReducers({
 	users,
 	signup,
 	idtypes: emptyReducer,
+	documentTypes: emptyReducer,
+	riskRating: emptyReducer,
+	kycStatus: emptyReducer,
 	provinces: emptyReducer,
 	router: routerReducer
 })
