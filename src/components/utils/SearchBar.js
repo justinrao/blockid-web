@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import TextField from 'material-ui/TextField';
 
-import Search from 'material-ui/svg-icons/action/search'
-import Close from 'material-ui/svg-icons/navigation/close'
+import {Search, Close} from 'material-ui-icons'
 import IconButton from 'material-ui/IconButton'
 import { grey500 } from 'material-ui/colors';
 

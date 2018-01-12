@@ -11,6 +11,7 @@ import Switch from 'material-ui/Switch';
 import { FormControlLabel, FormGroup } from 'material-ui/Form';
 import Menu, { MenuItem } from 'material-ui/Menu';
 import styles, {primary} from '../styles';
+import SearchBar from '../utils/SearchBar'
 
 const menuButtonStyle = {
     marginLeft: -12,
@@ -38,7 +39,7 @@ export default class PortalLandingPage extends React.Component {
     const { auth, open } = this.state;
     return (
       <div style={{width: '100%'}}>
-      
+
         <AppBar style={{background: primary}} position="static">
           <Toolbar>
             <IconButton style={menuButtonStyle} color="contrast" aria-label="Menu">
@@ -48,7 +49,8 @@ export default class PortalLandingPage extends React.Component {
               bID Portal
             </Typography>
             {auth && (
-              <div>
+                <div style={styles.container}>
+                <SearchBar searchTitle="Search" style={styles.content}/>
                 <IconButton
                   aria-owns={this.state.open ? 'menu-appbar' : null}
                   aria-haspopup="true"

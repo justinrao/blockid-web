@@ -12,16 +12,11 @@ import { FormControlLabel, FormGroup } from 'material-ui/Form';
 import Menu, { MenuItem } from 'material-ui/Menu';
 import styles, {primary} from '../styles';
 
-const menuButtonStyle = {
-    marginLeft: -12,
-    marginRight: 20,
-};
-
-export default class PortalLandingPage extends React.Component {
+export default class AccessRequest extends React.Component {
   state = {
     auth: true,
     user: {
-        name: 'John Smith',
+        bid: '',
     },
   };
 
@@ -32,45 +27,6 @@ export default class PortalLandingPage extends React.Component {
 
     return (
       <div style={{width: '100%'}}>
-        <AppBar style={{background: primary}} position="static">
-          <Toolbar>
-            <IconButton style={menuButtonStyle} color="contrast" aria-label="Menu">
-              <MenuIcon />
-            </IconButton>
-            <Typography type="title" color="inherit" style={styles.container}>
-              bID Portal
-            </Typography>
-            {auth && (
-              <div>
-                <IconButton
-                  aria-owns={open ? 'menu-appbar' : null}
-                  aria-haspopup="true"
-                  onClick={this.handleMenu}
-                  color="contrast"
-                >
-                  <AccountCircle />
-                </IconButton>
-                <Menu
-                  id="menu-appbar"
-                  anchorEl={anchorEl}
-                  anchorOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  open={open}
-                  onClose={this.handleClose}
-                >
-                  <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-                  <MenuItem onClick={this.handleLogout}>Logout</MenuItem>
-                </Menu>
-              </div>
-            )}
-          </Toolbar>
-        </AppBar>
       </div>
     );
   }

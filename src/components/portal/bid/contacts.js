@@ -31,11 +31,12 @@ const ddstyles = {
     marginTop: '10',
   }
 };
-export default class CompanyInfo extends Component {
+export default class ContactList extends Component {
   constructor(props) {
     super(props);
     this.state = {
       error: '',
+      contacts: []
     };
   }
 
