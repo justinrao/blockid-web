@@ -36,7 +36,11 @@ export class BidApi {
         return request('clients/${bid}', id);
     }
     static find(search) {
-        return request('clients')
+        return request('clients', {
+            params: {
+                legalName: search
+            }
+        })
     }
 
 	static getAuditLog(bid) {
