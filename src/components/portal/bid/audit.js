@@ -5,7 +5,7 @@ import Typography from 'material-ui/Typography';
 import styles from '../../styles'
 import Table, { TableBody, TableCell, TableHead, TableRow } from 'material-ui/Table';
 import moment from 'moment'
-
+import {green, blue, orange, red} from 'material-ui/colors';
 
 const ddstyles = {
   customWidth: {
@@ -16,9 +16,18 @@ const ddstyles = {
     flexWrap: 'wrap',
     flexDirection: 'column',
     margin: 'auto',
-    width: '40%'
+    width: '60%'
 
-  }
+  },
+  STANDARD: { color: green[500] },
+  MEDIUM: { color: blue[500] },
+  HIGH_1: { color: red[500] },
+  HIGH_2: { color: red[600] },
+  HIGH_3: { color: red[700] },
+  RESTRICTED: { color: orange[500] },
+  DONE: { color: green[500]},
+  INPROGRESS: { color: orange[500] },
+  INIT: { color: blue[500] }
 };
 export default class AuditList extends Component {
   constructor(props) {
@@ -60,7 +69,7 @@ export default class AuditList extends Component {
                             "postalCode": "Commodo."
                         }
                     },
-                    "KycStatus": "INIT",
+                    "KycStatus": "DONE",
                     "documents": [
                         {
                             "$class": "com.rbc.bid.Document",
@@ -120,7 +129,7 @@ export default class AuditList extends Component {
                         }
                     },
                     "KycStatus": "INIT",
-                    "riskRating": "STANDARD",
+                    "riskRating": "RESTRICTED",
                     "updatedBy": "Aute duis velit."
                 }
             ],
@@ -140,10 +149,8 @@ export default class AuditList extends Component {
 
   render() {
     return (
-      <div>
-         <Typography type="title" style={styles.content}>
-            Audit Log
-         </Typography>  
+      <div style={ddstyles.root}>
+         <Table> 
          <TableHead>
            <TableRow>
              <TableCell>Entry type</TableCell>
@@ -156,16 +163,17 @@ export default class AuditList extends Component {
          <TableBody>
            {this.state.audits.map(entry => {
              return (
-              <TableRow>
-                <TableCell>{entry.$class}</TableCell>
-                <TableCell>{entry.resources[0].riskRating}</TableCell>
-                <TableCell>{entry.resources[0].KycStatus}</TableCell>
+              <TableRow key={`transactionId-${entry.transactionId}`}>
+                <TableCell>{entry.$class.replace(/org\.hyperledger\.composer\.system\./,'')}</TableCell>
+                <TableCell style={ddstyles[`${entry.resources[0].riskRating}`]}>{entry.resources[0].riskRating}</TableCell>
+                <TableCell style={ddstyles[`${entry.resources[0].KycStatus}`]}>{entry.resources[0].KycStatus}</TableCell>
                 <TableCell>{entry.resources[0].updatedBy}</TableCell>
                 <TableCell>{moment(entry.timestamp).toString()}</TableCell>
               </TableRow>
              );
            })}
          </TableBody>
+         </Table>
       </div>
     );
   }
