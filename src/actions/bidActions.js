@@ -14,10 +14,11 @@ export function getBid(clientBid) {
 	}
 }
 
-export function findBid({clientBid, legalName}) {
+export function findBid(search) {
 	return (dispatch) => {
-		return BidApi.find({clientId, legalName}).then((client) => {
-			dispatch(gotBid(client))
+		return BidApi.find({search}).then((clients) => {
+            dispatch(gotBids(client))
+            dispatch(push('/portal/bids'))
 		}).catch((err) => {
 
 		})
@@ -27,6 +28,13 @@ export function findBid({clientBid, legalName}) {
 export function gotBid(client) {
 	return {
 		type: 'GOT_BID',
-		payload: client || []
+		payload: client || {}
+	};
+}
+
+export function gotBids(clients) {
+	return {
+		type: 'GOT_BIDS',
+		payload: clients || []
 	};
 }

@@ -23,7 +23,7 @@ export default class Login extends Component {
 
   handleLogin = () => {
     if (this.state.password) {
-        this.props.login(this.state)
+        this.props.store.login(this.state)
     }
   }
   render() {

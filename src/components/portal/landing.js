@@ -90,7 +90,7 @@ export default class PortalLandingPage extends React.Component {
           </Toolbar>
         </AppBar>
         <Switch>
-            <PropsRoute exact path="/portal/access" component={AccessRequest} store={this.props.store}></PropsRoute>
+            <PropsRoute exact path="/portal/bids" component={AccessRequest} store={this.props.store}></PropsRoute>
             <PropsRoute exact path="/portal/bid/:bid" component={BidView} store={this.props.store}></PropsRoute>
             <PropsRoute exact path="/portal/bid/:bid/:view" component={BidView} store={this.props.store}></PropsRoute>
         </Switch>
