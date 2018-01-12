@@ -14,7 +14,9 @@ function mapStateToProps(state) {
     session: state.session,
     permissions: Permissions,
     idtypes: state.idtypes,
-    provinces: state.provinces
+    provinces: state.provinces,
+    bids: state.bids,
+    bid: state.bid
   }
 
 }

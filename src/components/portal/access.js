@@ -12,30 +12,42 @@ import { FormControlLabel, FormGroup } from 'material-ui/Form';
 import Menu, { MenuItem } from 'material-ui/Menu';
 import styles, {primary} from '../styles';
 import Card, { CardContent } from 'material-ui/Card';
+import {Check} from 'material-ui-icons';
+import CardActions from 'material-ui/Card/CardActions';
+import Button from 'material-ui/Button'
+import { Link } from 'react-router-dom';
 
 export default class AccessRequest extends React.Component {
-  state = {
-    auth: true,
-    user: {
-        bid: '',
-    },
-  };
+  constructor(props) {
+    super(props);
+    this.props.store.getBids();
+  }
+
+  handleAccess = (bid) => {
+    this.props.store.requestAccess(bid);
+  }
 
   render() {
-    const { classes } = this.props;
-    const { auth, anchorEl } = this.state;
-    const open = Boolean(anchorEl);
-
+    const companies = this.props.store.bids || [];
     return (
       <div style={styles.containerWrap}>
-        <Card style={styles.info}>
-          <div>
-            <CardContent>
-              <Typography type='headline'>The Goldman Sachs Group, Inc.</Typography>
-              <Typography type='subheading'>HQ: 200 West Street, Manhattan, New York City, New York, U.S</Typography>
-            </CardContent>
+      { companies.map(company => {
+        return (<Card style={styles.info} key={`company-${company.clientBID}`}>
+        <CardContent style={styles.container}>
+          <div style={styles.containerColumn}>
+            <Typography type='headline'>{company.legalName}</Typography>
+            <Typography type='subheading'>HQ: {company.legalAddress.country}</Typography>
           </div>
-        </Card>
+        </CardContent>
+        <CardActions>
+        {company.access !== "GRANTED" && (<Button raised color="primary"onTouchTap={() => this.handleAccess(company.clientBID)} disabled={company.access === 'INPROGRESS'}>Request Access</Button>)}
+        {company.access === "GRANTED" && (<Button style={styles.action} raised color="contrast" component={Link} to={`/portal/bid/${company.clientBID}/`}>Open</Button>)}
+
+        </CardActions>
+      </Card>)
+
+      })
+      }
       </div>
     );
   }

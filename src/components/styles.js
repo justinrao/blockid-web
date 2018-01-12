@@ -1,4 +1,4 @@
-import {white} from 'material-ui/colors';
+import {white, green} from 'material-ui/colors';
 
 export const primary = '#00BCd4'
 export const secondary = '#007ac1'
@@ -54,6 +54,9 @@ const styles = {
     },
     secondaryForeground: {
         color: white,
+    },
+    statusGood: {
+        color: green[500]
     },
     contrastGrey: {
         background: contrastGrey,
