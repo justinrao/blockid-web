@@ -54,7 +54,7 @@ export function deleteUser(id) {
 		User.delete(id).then(() => {
 			dispatch(deletedUser(id))
 			dispatch(push('/'))
-		}).catch((err) => {
-		})
+		}).catch((err) => {})
 	}
 }
+

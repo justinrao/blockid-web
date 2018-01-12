@@ -58,3 +58,21 @@ export function gotBids(clients) {
 		payload: clients || []
 	};
 }
+
+export function getAuditLog(bid) {
+	return (dispatch) => {
+		BidApi.getAuditLog(bid)
+			.then((result) => {
+				dispatch(receivedAuditLog(result))
+			})
+			.catch(err => console.error(err))
+	}
+}
+
+export function receivedAuditLog(auditLog) {
+	console.log(auditLog)
+	return {
+		type: "GOT_AUDITLOG",
+		payload: auditLog || []
+	}
+}

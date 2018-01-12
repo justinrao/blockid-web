@@ -16,6 +16,7 @@ import SearchBar from '../utils/SearchBar'
 import {PropsRoute} from '../Layout'
 import {BidView} from './bid';
 import AccessRequest from './access';
+import { getAuditLog } from '../../actions/bidActions.js'
 
 const menuButtonStyle = {
     marginLeft: -12,
@@ -36,6 +37,10 @@ export default class PortalLandingPage extends React.Component {
             open: false
           };        
     }
+
+	componentDidMount() {
+		this.props.store.getAuditLog("882155d4-dadf-48e9-b6ef-58c947d86d56")
+	}
 
   handleMenu = event => {
     this.setState({ open: !this.state.open });
@@ -99,4 +104,3 @@ export default class PortalLandingPage extends React.Component {
     );
   }
 }
-
