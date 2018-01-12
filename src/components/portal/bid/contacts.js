@@ -24,8 +24,8 @@ export default class Contacts extends Component {
     this.state = {
       error: '',
       contacts: [
-        {label: "Doe, Jamie - Compliance", audit: "Last updated: Dec 14, 2010"},
-        {label: "Vedder, Evan - Legal", audit: "Last updated: Feb 10, 2015"}
+        {id: 1, label: "Doe, Jamie - Compliance", audit: "Last updated: Dec 14, 2010"},
+        {id: 2, label: "Vedder, Evan - Legal", audit: "Last updated: Feb 10, 2015"}
       ]
     };
   }
@@ -39,7 +39,7 @@ export default class Contacts extends Component {
         {this.state.contacts.length > 0 && 
           <List>
           {this.state.contacts.map((item) => {
-                return <ListItem button><Avatar><SettingsPhone /></Avatar><ListItemText primary={item.label} secondary={item.audit}/></ListItem>
+                return <ListItem button key={`contact-${item.id}`}><Avatar><SettingsPhone /></Avatar><ListItemText primary={item.label} secondary={item.audit}/></ListItem>
               })
               }
           </List>          

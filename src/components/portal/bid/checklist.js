@@ -22,18 +22,18 @@ export default class Checklist extends Component {
     this.state = {
       error: '',
       checklist: [
-        {label: 'Label', audit: 'Audit Info'}
+        {id: 1, label: 'Label', audit: 'Audit Info'}
       ]
     };
   }
 
   render() {
     return (
-      <div styles="ddstyles.root">
+      <div style={ddstyles.root}>
         {this.state.checklist.length > 0 && 
           <List>
           {this.state.checklist.map((item) => {
-                return <ListItem><Check /><ListItemText primary={item.label} secondary={item.audit}/></ListItem>
+                return <ListItem key={`checkitem-${item.id}`}><Check /><ListItemText primary={item.label} secondary={item.audit}/></ListItem>
               })
               }
           </List>          

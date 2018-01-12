@@ -12,8 +12,8 @@ export default class Directors extends Component {
     this.state = {
       error: '',
       directors: [
-        {name: "Fringe, Peter - CEO", audit: "Last updated: 8 Jul, 2015"},
-        {name: "Lennon, Frida - CFO", audit: "Last updated: 31 Jan, 2017"}
+        {id: 1, name: "Fringe, Peter - CEO", audit: "Last updated: 8 Jul, 2015"},
+        {id: 2, name: "Lennon, Frida - CFO", audit: "Last updated: 31 Jan, 2017"}
       ]
     };
   }
@@ -27,7 +27,7 @@ export default class Directors extends Component {
         {this.state.directors.length > 0 && 
           <List>
           {this.state.directors.map((item) => {
-                return <ListItem><AccountCircle /><ListItemText primary={item.name} secondary={item.audit}/></ListItem>
+                return <ListItem key={`director-${item.id}`}><AccountCircle /><ListItemText primary={item.name} secondary={item.audit}/></ListItem>
               })
               }
           </List>          
