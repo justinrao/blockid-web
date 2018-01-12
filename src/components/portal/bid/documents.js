@@ -20,8 +20,8 @@ export default class DocumentsList extends Component {
     this.state = {
       error: '',
       documents: [
-        {name: 'Contract 123', synopsis:'A contract to specify business relation', audit: 'Last updated: Jun 20, 2008', preview: ''},
-        {name: 'Articles of Corporation', synopsis:'Articles of incorporation, also referred to as the certificate of incorporation or the corporate charter, act as a charter to establish the existence of a corporation in the United States and Canada, and are filed with the Secretary of State, or other company registrar.', audit: 'Last updated: Jun 20, 2008', preview: ''}
+        {id: 1, name: 'Contract 123', synopsis:'A contract to specify business relation', audit: 'Last updated: Jun 20, 2008', preview: ''},
+        {id: 2, name: 'Articles of Corporation', synopsis:'Articles of incorporation, also referred to as the certificate of incorporation or the corporate charter, act as a charter to establish the existence of a corporation in the United States and Canada, and are filed with the Secretary of State, or other company registrar.', audit: 'Last updated: Jun 20, 2008', preview: ''}
       ]
     };
   }
@@ -36,7 +36,7 @@ export default class DocumentsList extends Component {
         {this.state.documents.length > 0 && 
           this.state.documents.map((document) => {
           return (
-          <Card style={cstyles.card}>
+          <Card style={cstyles.card} key={`document-${document.id}`}>
           <CardMedia
             image={document.preview}
             title="Contemplative Reptile"
