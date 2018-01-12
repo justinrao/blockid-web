@@ -18,12 +18,16 @@ import Button from 'material-ui/Button'
 import { Link } from 'react-router-dom';
 import Input, { InputLabel, InputAdornment } from 'material-ui/Input';
 import FormControl from 'material-ui/Form/FormControl';
+import CircularProgress from 'material-ui/Progress/CircularProgress';
 export default class AccessRequest extends React.Component {
   constructor(props) {
     super(props);
     const {search} = props.match.params;
     if (!!search) {
       this.props.store.findBid(search);
+    } else {
+      // TODO remove for Monday
+      this.props.store.getBids();
     }
     this.state = {
       search: search || ''
@@ -77,15 +81,18 @@ export default class AccessRequest extends React.Component {
         </FormControl>
 
       { companies.map(company => {
+        const isPending = () => {return company.access === "INPROGRESS"};
+        const address = company.legalAddress;
         return (<Card style={styles.info} key={`company-${company.clientBID}`}>
         <CardContent style={styles.container}>
           <div style={styles.containerColumn}>
             <Typography type='headline'>{company.legalName}</Typography>
-            <Typography type='subheading'>HQ: {company.legalAddress.country}</Typography>
+            <Typography type='subheading'>Headquarter: {address.addressLine1}, {address.city}, {address.province}, {address.country}</Typography>
           </div>
         </CardContent>
         <CardActions>
-        {company.access !== "GRANTED" && (<Button raised color="primary"onTouchTap={() => this.handleAccess(company.clientBID)} disabled={company.access === 'INPROGRESS'}>Request Access</Button>)}
+        {company.access !== "GRANTED" && (<Button raised color="primary" onTouchTap={() => this.handleAccess(company.clientBID)} disabled={isPending()}>{isPending() ? 'Pending': 'Request Access'}</Button>)}
+        {isPending() && (<CircularProgress />)}
         {company.access === "GRANTED" && (<Button style={styles.action} raised color="contrast" component={Link} to={`/portal/bid/${company.clientBID}/`}>Open</Button>)}
 
         </CardActions>
