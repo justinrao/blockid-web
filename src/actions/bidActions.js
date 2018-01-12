@@ -4,13 +4,17 @@ import data from '../data/data.json'
 
 export function getBid(clientBID) {
 	return (dispatch) => {
-        const client = data.clients.find((client) => client.clientBID === clientBID);
-        dispatch(gotBid(client))
-		// return BidApi.get().then((client) => {
-		// 	dispatch(gotBid(client))
-		// }).catch((err) => {
+		console.log(clientBID);
+		return BidApi.get(clientBID).then((client) => {
+			dispatch(gotBid(client))
+		}).catch((err) => {
 
-		// })
+			// Remove this on Monday if API integrated is well
+            const client = data.clients.find((client) => client.clientBID === clientBID);
+            dispatch(gotBid(client))
+
+            console.log(err);
+		})
 	}
 }
 

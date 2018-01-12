@@ -32,9 +32,10 @@ export function getProfile() {
 
 export class BidApi {
 
-    static get(id) {
-        return request('clients/${bid}', id);
+    static get(bid) {
+        return request(`clients/${bid}`);
     }
+
     static find(search) {
         return request('clients', {
             params: {
