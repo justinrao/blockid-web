@@ -44,6 +44,27 @@ const defaultState = {
     idtypes: [
         {id: 'dl', label: 'Driver\'s License'},
         {id: 'pp', label: 'Passport'}
+    ],
+    kycStatus: [
+        {id: 'INIT', label: 'Started'},
+        {id: 'INPROGRESS', label: 'In Progress'},
+        {id: 'DONE', label: 'Done'}
+    ],
+    documentTypes: [
+        {id: 'CERTIFICATE_OF_INCORPORATION', label: 'Certificate of Incorporation'},
+        {id: 'CLIENT_AGREEMENT', label: 'Client Agreement'},
+        {id: 'CERTIFICATE_OF_AUTHORIZED_SIGNATORIES', label: 'Certificate of Authorized Signatures'},
+        {id: 'POWER_TO_BID', label: 'Power to Bid'},
+        {id: 'PEP_HIO_FORM', label: 'PEP HIO Form'},
+        {id: 'CONFIRMATION_OF_EXISTENCE', label: 'Confirmation of Existence'}
+    ],
+    riskRating: [
+        {id: 'STANDARD', label: 'Standard'},
+        {id: 'MEDIUM', label: 'Medium'},
+        {id: 'HIGH_1', label: 'High 1'},
+        {id: 'HIGH_2', label: 'High 2'},
+        {id: 'HIGH_3', label: 'High 3'},
+        {id: 'RESTRICTED', label: 'Restricted'}
     ]
 }
 
