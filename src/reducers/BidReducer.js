@@ -1,5 +1,4 @@
 const bid = (state = {}, action) => {
-    let i
     switch (action.type) {
       case 'GOT_BID':
         return {
@@ -13,7 +12,6 @@ const bid = (state = {}, action) => {
   export default bid
 
   export const bids = (state = [], action) => {
-    let i
     switch (action.type) {
       case 'GOT_BIDS':
         return [

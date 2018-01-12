@@ -19,6 +19,7 @@ export default class BidView extends Component {
   constructor(props) {
     super(props);
     const {bid, view} = this.props.match.params;
+    
     this.state = {
         bid,
         view,
@@ -26,16 +27,21 @@ export default class BidView extends Component {
         user: {
             name: 'John Smith',
         },
-        open: false
+        open: false,
+        client: this.props.store.bid || {}
       };        
 
   }
 
   componentWillMount() {
     if (this.props.match.params.bid) {
-    //   this.props.store.getBid(this.props.match.params.bid);
+       const client = this.props.store.getBid(this.props.match.params.bid);
+       this.setState({...this.state, client: this.props.store.bid || {}})
     }
   }
+//   componentWillUpdate() {
+//       this.setState({...this.state, client: this.props.store.bid || {}})
+//   }
 
   render() {
     const {bid, view} = this.props.match.params;
@@ -43,8 +49,8 @@ export default class BidView extends Component {
     return (
       <div style={styles.containerColumn}>
         <div style={{...styles.contrastGrey}}>
-          <CompanyInfo/>
-          <RiskRating />
+          <CompanyInfo client={this.state.client}/>
+          <RiskRating rating={this.state.client.riskRating}/>
           </div>
           <Tabs style={styles.secondaryBackground}
             value={view || 'checklist'}
