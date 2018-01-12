@@ -16,7 +16,7 @@ export default class DocumentsList extends Component {
     return (
       <div>
    <Typography type="title" style={styles.content}>
-   Audit
+   Documents
  </Typography>       
 
           

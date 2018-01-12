@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { relative, isAbsolute } from 'path';
-import {AuditList} from '.'
+import {AuditList, RiskRating, CompanyInfo, Checklist, Subsidiaries, Contacts, Documents, Directors} from '.'
 import Typography from 'material-ui/Typography'
 import styles from '../../styles'
+import Tabs, {Tab} from 'material-ui/Tabs'
+import Link from 'react-router-dom/Link';
 
 export default class BidView extends Component {
   constructor(props) {
@@ -21,13 +23,28 @@ export default class BidView extends Component {
   }
 
   render() {
+    const {bid, view} = this.props.match.params;
     return (
       <div>
-         {this.state.view === 'audit' && ( <AuditList {...this.props}></AuditList>)}
-         {this.state.view === 'checklist' && ( <AuditList {...this.props}></AuditList>)}
-         {this.state.view === 'contacts' && ( <AuditList {...this.props}></AuditList>)}
-         {this.state.view === 'documents' && ( <AuditList {...this.props}></AuditList>)}
-         {this.state.view === 'subsidiaries' && ( <AuditList {...this.props}></AuditList>)}          
+          <CompanyInfo />
+          <RiskRating />
+          <Tabs style={styles.contrastBackground}
+            value={view || 'checklist'}
+            fullWidth
+          >
+            <Tab label="audit" value="audit" component={Link} to={`/portal/bid/${bid}/audit`}/>
+            <Tab label="checklist" value="checklist" component={Link} to={`/portal/bid/${bid}/checklist`}/>
+            <Tab label="contacts" value="contacts" component={Link} to={`/portal/bid/${bid}/contacts`}/>
+            <Tab label="directors" value="directors" component={Link} to={`/portal/bid/${bid}/directors`}/>
+            <Tab label="documents" value="documents" component={Link} to={`/portal/bid/${bid}/documents`}/>
+            <Tab label="subsidiaries" value="subsidiaries" component={Link} to={`/portal/bid/${bid}/subsidiaries`}/>
+          </Tabs>
+         {view === 'audit' && ( <AuditList {...this.props}/>)}
+         {view === 'checklist' && ( <Checklist {...this.props}/>)}
+         {view === 'contacts' && ( <Contacts {...this.props}/>)}
+         {view === 'directors' && ( <Directors {...this.props}/>)}
+         {view === 'documents' && ( <Documents {...this.props}/>)}
+         {view === 'subsidiaries' && ( <Subsidiaries {...this.props}/>)}          
       </div>
     );
   }

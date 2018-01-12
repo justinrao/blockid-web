@@ -7,13 +7,15 @@ import Typography from 'material-ui/Typography';
 import IconButton from 'material-ui/IconButton';
 import MenuIcon from 'material-ui-icons/Menu';
 import AccountCircle from 'material-ui-icons/AccountCircle';
-import Switch from 'material-ui/Switch';
+import { Switch} from 'react-router-dom';
+
 import { FormControlLabel, FormGroup } from 'material-ui/Form';
 import Menu, { MenuItem } from 'material-ui/Menu';
 import styles, {primary} from '../styles';
 import SearchBar from '../utils/SearchBar'
 import {PropsRoute} from '../Layout'
 import {BidView} from './bid';
+import AccessRequest from './access';
 
 const menuButtonStyle = {
     marginLeft: -12,
@@ -87,6 +89,11 @@ export default class PortalLandingPage extends React.Component {
             )}
           </Toolbar>
         </AppBar>
+        <Switch>
+            <PropsRoute exact path="/portal/access" component={AccessRequest} store={this.props.store}></PropsRoute>
+            <PropsRoute exact path="/portal/bid/:bid" component={BidView} store={this.props.store}></PropsRoute>
+            <PropsRoute exact path="/portal/bid/:bid/:view" component={BidView} store={this.props.store}></PropsRoute>
+        </Switch>
         { this.state.bid && (<BidView {...this.props} />)}           
       </div>
     );

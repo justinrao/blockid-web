@@ -1,4 +1,4 @@
-import {grey700} from 'material-ui/colors';
+import {white} from 'material-ui/colors';
 
 export const primary = '#00BCd4'
 export const secondary = '#007ac1'
@@ -27,6 +27,25 @@ const actionButton = {
 }
 
 const styles = {
+    contrastBackground: {
+        background: white,
+        color: '#212121'
+    },
+    contrastForeground: {
+        color: white,
+    },
+    primaryBackground: {
+        background: primary,
+    },
+    primaryForeground: {
+        color: primary,
+    },
+    secondaryBackground: {
+        background: secondary,
+    },
+    secondaryForeground: {
+        color: white,
+    },
     container: flex,
     mainContainer: {
         ...flex,
@@ -45,7 +64,7 @@ const styles = {
         alignContent: 'center'
       },
     info: {
-        color: 'white',
+        color: white,
         background: primary,
         padding: 16,
         flex: '1 1 50%',

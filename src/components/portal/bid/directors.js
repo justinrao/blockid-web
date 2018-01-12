@@ -16,7 +16,7 @@ export default class DirectorList extends Component {
     return (
       <div>
    <Typography type="title" style={styles.content}>
-            Audit
+            Directors
           </Typography>       
           
       </div>

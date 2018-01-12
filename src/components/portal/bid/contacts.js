@@ -46,7 +46,7 @@ export default class ContactList extends Component {
     return (
       <div>
    <Typography type="title" style={styles.content}>
-   Audit
+   Contacts
  </Typography>       
 
           
