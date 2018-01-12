@@ -11,6 +11,7 @@ import Switch from 'material-ui/Switch';
 import { FormControlLabel, FormGroup } from 'material-ui/Form';
 import Menu, { MenuItem } from 'material-ui/Menu';
 import styles, {primary} from '../styles';
+import Card, { CardContent } from 'material-ui/Card';
 
 export default class AccessRequest extends React.Component {
   state = {
@@ -26,7 +27,15 @@ export default class AccessRequest extends React.Component {
     const open = Boolean(anchorEl);
 
     return (
-      <div style={{width: '100%'}}>
+      <div style={styles.containerWrap}>
+        <Card style={styles.info}>
+          <div>
+            <CardContent>
+              <Typography type='headline'>The Goldman Sachs Group, Inc.</Typography>
+              <Typography type='subheading'>HQ: 200 West Street, Manhattan, New York City, New York, U.S</Typography>
+            </CardContent>
+          </div>
+        </Card>
       </div>
     );
   }
