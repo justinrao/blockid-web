@@ -1,30 +1,18 @@
 import axios from 'axios'
 
-axios.defaults.baseURL = 'http://localhost:3000/api';
+axios.defaults.baseURL = 'http://localhost:4000/api';
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 let instance = axios.create();
 
 export function handleResponse({data}) {
-    let {status, ...value} = data.d;
-    if (status === 2) {
-        return Promise.reject('reset');
-    } else if (status === 1) {
-        return Promise.reject('Request failed.');
-    } else if (status === 3) {
-        return Promise.reject('Access denied.');
-    } else {
-        if (value.value)
-            return Promise.resolve(value.value);
-        else
-            return Promise.resolve(value);
-    }
+	return data
 }
 
 let session = {}
 
 function request(name, params = {}) {
-    return instance.post(`/${name}`, {...session, ...params}).then(handleResponse)
+    return instance.get(`/${name}`, {...session, ...params}).then(handleResponse)
 }
 
 export function setSession({sessionId}) {
@@ -50,6 +38,10 @@ export class BidApi {
     static find(request) {
         return request('CreateUser', request)
     }
+
+	static getAuditLog(bid) {
+		return request(`clients/${bid}/transactions`)
+	}
 }
 
 export class User {
@@ -66,4 +58,5 @@ export class User {
     static delete(id) {
         return request('DeleteUser', {id})
     }
+
 }
