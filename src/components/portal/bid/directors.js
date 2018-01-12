@@ -4,7 +4,7 @@ import Typography from 'material-ui/Typography'
 import styles from '../../styles'
 import List, {ListItem, ListItemText} from 'material-ui/List';
 import moment from 'moment'
-import {Check} from 'material-ui-icons';
+import {Check, AccountCircle} from 'material-ui-icons';
 
 export default class Directors extends Component {
   constructor(props) {
@@ -27,7 +27,7 @@ export default class Directors extends Component {
         {this.state.directors.length > 0 && 
           <List>
           {this.state.directors.map((item) => {
-                return <ListItem><Check /><ListItemText primary={item.name} secondary={item.audit}/></ListItem>
+                return <ListItem><AccountCircle /><ListItemText primary={item.name} secondary={item.audit}/></ListItem>
               })
               }
           </List>          
