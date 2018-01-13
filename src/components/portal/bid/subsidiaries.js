@@ -14,12 +14,8 @@ export default class SubsidiariesList extends Component {
 
   render() {
     return (
-      <div>
-   <Typography type="title" style={styles.content}>
-   Subsidiaries
- </Typography>       
-
-          
+      <div style={styles.containerWrap}>
+         
       </div>
     );
   }

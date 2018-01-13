@@ -5,7 +5,13 @@ import ListItem from 'material-ui/List/ListItem';
 import ListItemText from 'material-ui/List/ListItemText';
 import Divider from 'material-ui/Divider'
 import styles from '../../styles'
-
+import RiskRating from './risk-rating'
+import ExpansionPanel, {
+  ExpansionPanelDetails,
+  ExpansionPanelSummary,
+} from 'material-ui/ExpansionPanel';
+import ExpandMoreIcon from 'material-ui-icons/ExpandMore'
+import Typography from 'material-ui/Typography/Typography';
 export default class CompanyInfo extends Component {
   constructor(props) {
     super(props);
@@ -36,48 +42,50 @@ export default class CompanyInfo extends Component {
       flexBasis: '40%',
       flexGrow: 'unset'
     }
+    const addressStyle = {
+      ...labelStyle,
+      alignItems: 'flex-start',
+      alignContent: 'flex-start'
+      
+    }
+    const {client} = this.props;
     return (
-      <div>
-        <h2>Company Information</h2>
-
-        <div style={styles.container}>
+      <ExpansionPanel defaultExpanded>
+        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+        <Typography type="title" style={styles.content}>{client.legalName}</Typography>
+        <RiskRating style={{flex: '0 0 20%'}} rating={client.riskRating} ratings={this.props.store.riskRating}/>
+        </ExpansionPanelSummary>
+        <ExpansionPanelDetails>
         <List style={styles.info}>
-          <ListItem>
-            <ListItemText style={labelStyle} primary={this.labels.legalName} />
-            <ListItemText style={styles.left} primary={this.state.legalName} />
-          </ListItem>
-          <Divider/>
+        <ListItem >
+        <ListItemText style={addressStyle} primary={this.labels.legalAddress} />
+        { client.legalAddress && <ListItemText primary={(
+          <div>
+          <div>{client.legalAddress.addressLine1}</div>
+          <div>{client.legalAddress.addressLine2}</div>
+          <div>{client.legalAddress.city}, {client.legalAddress.province}</div>
+          <div>{client.legalAddress.country}</div>
+          <div>{client.legalAddress.postalCode}</div>
+          </div>
+        )} />}
+      </ListItem>
+        </List>
+        <List style={styles.info}>
           <ListItem >
             <ListItemText style={labelStyle} primary={this.labels.holdingCompany} />
-            <ListItemText style={styles.left} primary={this.state.holdingCompany} />
+            <ListItemText style={styles.left} primary={client.holdingCompany} />
           </ListItem>
-          <Divider/>
           <ListItem >
             <ListItemText style={labelStyle} primary={this.labels.countryOfIncorporation} />
-            <ListItemText style={styles.left} primary={this.state.countryOfIncorporation} />
+            <ListItemText style={styles.left} primary={client.countryOfIncorporation} />
           </ListItem>
-          <Divider/>
           <ListItem >
             <ListItemText style={labelStyle} primary={this.labels.dateOfIncorporation} />
-            <ListItemText style={styles.left} primary={this.state.dateOfIncorporation} />
+            <ListItemText style={styles.left} primary={client.dateOfIncorporation} />
           </ListItem>
-          <Divider/>
-        <ListItem >
-        <ListItemText style={labelStyle} primary={this.labels.legalAddress} />
-        <ListItemText primary={(
-          <div>
-          <div>{this.state.legalAddress.addressLine1}</div>
-          <div>{this.state.legalAddress.addressLine2}</div>
-          <div>{this.state.legalAddress.city}, {this.state.legalAddress.province}</div>
-          <div>{this.state.legalAddress.country}</div>
-          <div>{this.state.legalAddress.postalCode}</div>
-          </div>
-        )} />            
-      </ListItem>
-      <Divider/>
-        </List>
-        </div>        
-      </div>
+          </List>
+</ExpansionPanelDetails>
+</ExpansionPanel>
     );
   }
 }

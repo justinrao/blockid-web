@@ -6,20 +6,9 @@ import { green } from 'material-ui/colors';
 import styles from '../../styles';
 
 const ddstyles = {
-  customWidth: {
-
-  },
   green: {
     color: green[500]
-  },
-  root: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    flexDirection: 'column',
-    margin: 'auto',
-    width: '40%'
-
-  },
+  }
 };
 export default class Checklist extends Component {
   constructor(props) {
@@ -36,7 +25,7 @@ export default class Checklist extends Component {
 
   render() {
     return (
-      <div style={{...ddstyles.root, ...styles.containerColumn}}>
+      <div style={styles.containerWrap}>
         {this.state.checklist.length > 0 && 
             <List>
             {this.state.checklist.map((item) => {

@@ -63,6 +63,11 @@ const styles = {
         padding: 24
     },
     container: flex,
+    tab: {
+        borderBottomColor: '#ff4081',
+        borderBottomWidth: 2,
+        borderBottomStyle: 'solid'
+    },
     mainContainer: {
         ...flex,
 

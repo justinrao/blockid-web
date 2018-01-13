@@ -32,14 +32,11 @@ export default class Contacts extends Component {
 
   render() {
     return (
-      <div>
-        <Typography type="title" style={styles.content}>
-          Contact List
-        </Typography>       
+      <div style={styles.containerWrap}>
         {this.state.contacts.length > 0 && 
           <List>
           {this.state.contacts.map((item) => {
-                return <ListItem button key={`contact-${item.id}`}><Avatar><SettingsPhone /></Avatar><ListItemText primary={item.label} secondary={item.audit}/></ListItem>
+                return <ListItem key={`contact-${item.id}`}><Avatar><SettingsPhone /></Avatar><ListItemText primary={item.label} secondary={item.audit}/></ListItem>
               })
               }
           </List>          

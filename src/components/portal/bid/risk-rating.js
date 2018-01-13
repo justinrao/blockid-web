@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { relative, isAbsolute } from 'path';
+import Typography from 'material-ui/Typography/Typography';
 
 const ddstyles = {
   customWidth: {
@@ -32,16 +33,11 @@ const ddstyles = {
   }
 };
 export default class RiskRating extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      error: '',
-    };
-  }
 
   render() {
+    const r = this.props.ratings.find((r) => r.id === this.props.rating)
     return (
-      <div>Risk Rating </div>
+      <Typography type="subheading"><b>One Rating:</b> {(r && r.label) || this.props.rating}</Typography>
     );
   }
 }

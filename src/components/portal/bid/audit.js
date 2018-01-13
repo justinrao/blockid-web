@@ -11,14 +11,6 @@ const ddstyles = {
   customWidth: {
 
   },
-  root: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    flexDirection: 'column',
-    margin: 'auto',
-    width: '60%'
-
-  },
   STANDARD: { color: green[500] },
   MEDIUM: { color: blue[500] },
   HIGH_1: { color: red[500] },
@@ -149,7 +141,7 @@ export default class AuditList extends Component {
 
   render() {
     return (
-      <div style={ddstyles.root}>
+      <div style={styles.containerWrap}>
          <Table> 
          <TableHead>
            <TableRow>

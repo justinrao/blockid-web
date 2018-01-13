@@ -44,16 +44,14 @@ export default class BidView extends Component {
 //   }
 
   render() {
-    const {bid, view} = this.props.match.params;
+    let {bid, view} = this.props.match.params;
     const client = this.props.store.bid || {};
+    view = view || 'checklist' 
     return (
       <div style={styles.containerColumn}>
-        <div style={styles.contrastGrey}>
-          <CompanyInfo client={this.state.client}/>
-          <RiskRating rating={this.state.client.riskRating}/>
-          </div>
-          <Tabs style={styles.contrastBackground}
-            value={view || 'checklist'}
+          <CompanyInfo style={styles.contrastBackground} {...this.props} client={client}/>
+          <Tabs style={{...styles.contrastBackground, ...styles.tab}}
+            value={view}
             fullWidth
           >
             <Tab label="audit" value="audit" component={Link} to={`/portal/bid/${bid}/audit`}/>

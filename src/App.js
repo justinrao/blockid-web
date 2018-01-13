@@ -16,7 +16,10 @@ function mapStateToProps(state) {
     idtypes: state.idtypes,
     provinces: state.provinces,
     bids: state.bids,
-    bid: state.bid
+    bid: state.bid,
+    riskRating: state.riskRating,
+    documentTypes: state.documentTypes,
+    kycStatus: state.kycStatus
   }
 
 }

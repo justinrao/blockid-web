@@ -79,12 +79,12 @@ export default class AccessRequest extends React.Component {
             }
           />
         </FormControl>
-
+        <div style={styles.info}>
       { companies.map(company => {
         const isPending = () => {return company.access === "INPROGRESS"};
         const address = company.legalAddress;
-        return (<Card style={styles.info} key={`company-${company.clientBID}`}>
-        <CardContent style={styles.container}>
+        return (<Card style={{...styles.info}} key={`company-${company.clientBID}`}>
+        <CardContent style={styles.containerWrap}>
           <div style={styles.containerColumn}>
             <Typography type='headline'>{company.legalName}</Typography>
             <Typography type='subheading'>Headquarter: {address.addressLine1}, {address.city}, {address.province}, {address.country}</Typography>
@@ -100,7 +100,7 @@ export default class AccessRequest extends React.Component {
 
       })
       }
-      </div>
+      </div></div>
     );
   }
 }

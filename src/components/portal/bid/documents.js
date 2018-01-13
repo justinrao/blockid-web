@@ -7,7 +7,7 @@ import Button from 'material-ui/Button';
 
 const cstyles = {
   card: {
-    maxWidth: "345px",
+    
   },
   media: {
     height: 200,
@@ -28,7 +28,7 @@ export default class DocumentsList extends Component {
 
   render() {
     return (
-      <div>
+      <div style={styles.containerWrap}>
         {this.state.documents.length > 0 && 
           this.state.documents.map((d) => {
           return (

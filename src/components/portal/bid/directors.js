@@ -20,10 +20,7 @@ export default class Directors extends Component {
 
   render() {
     return (
-      <div>
-        <Typography type="title" style={styles.content}>
-           Directors
-        </Typography>       
+      <div style={styles.containerWrap}>     
         {this.state.directors.length > 0 && 
           <List>
           {this.state.directors.map((item) => {
