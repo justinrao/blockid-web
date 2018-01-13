@@ -35,7 +35,7 @@ export default class BidView extends Component {
 
   componentWillMount() {
     if (this.props.match.params.bid) {
-       const client = this.props.store.getBid(this.props.match.params.bid);
+       this.props.store.getBid(this.props.match.params.bid);
        this.setState({...this.state, client: this.props.store.bid || {}})
     }
   }
@@ -61,7 +61,7 @@ export default class BidView extends Component {
             <Tab label="documents" value="documents" component={Link} to={`/portal/bid/${bid}/documents`}/>
             <Tab label="subsidiaries" value="subsidiaries" component={Link} to={`/portal/bid/${bid}/subsidiaries`}/>
           </Tabs>
-         {view === 'audit' && ( <AuditList {...this.props}/>)}
+         {view === 'audit' && ( <AuditList {...this.props} audits={client.auditLogs}/>)}
          {view === 'checklist' && ( <Checklist {...this.props}/>)}
          {view === 'contacts' && ( <Contacts {...this.props}/>)}
          {view === 'directors' && ( <Directors {...this.props}/>)}

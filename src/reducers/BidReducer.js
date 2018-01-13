@@ -4,6 +4,11 @@ const bid = (state = {}, action) => {
         return {
           ...action.payload       
         }
+        case 'GOT_AUDITLOG':
+        return {
+            ...state,
+            auditLogs: action.payload || []
+        }
       default:
         return state
     }

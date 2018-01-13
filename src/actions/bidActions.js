@@ -13,9 +13,10 @@ export function getBid(clientBID) {
                 dispatch(gotBid(client))
             }
 
-
             dispatch(gotBid(client))
 
+            // get audit log once client received
+            dispatch(getAuditLog(clientBID))
 
 		}).catch((err) => {
 

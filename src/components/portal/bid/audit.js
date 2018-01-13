@@ -26,7 +26,7 @@ export default class AuditList extends Component {
     super(props);
     this.state = {
       error: '',
-      audits: [
+      audits: props.audits || [
         {
             "$class": "org.hyperledger.composer.system.UpdateAsset",
             "resources": [
