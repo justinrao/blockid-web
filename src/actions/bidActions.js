@@ -6,12 +6,18 @@ export function getBid(clientBID) {
 	return (dispatch) => {
 		console.log(clientBID);
 		return BidApi.get(clientBID).then((client) => {
-			dispatch(gotBid(client))
-		}).catch((err) => {
 
-			// Remove this on Monday if API integrated is well
-            const client = data.clients.find((client) => client.clientBID === clientBID);
+            // Remove this on Monday if API integrated is well
+			if (Object.keys(client).length === 0) {
+                client = data.clients.find((client) => client.clientBID === clientBID);
+                dispatch(gotBid(client))
+            }
+
+
             dispatch(gotBid(client))
+
+
+		}).catch((err) => {
 
             console.log(err);
 		})
