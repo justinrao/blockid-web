@@ -7,7 +7,7 @@ import Button from 'material-ui/Button';
 
 const cstyles = {
   card: {
-    
+    minWidth: 400
   },
   media: {
     height: 200,
@@ -25,6 +25,10 @@ export default class DocumentsList extends Component {
     };
     console.log(this.props.store.documentType)
   }
+  getDocumentType(type) {
+    const s = this.props.store.documentTypes.find((r) => r.id === type);
+    return s.label || type;
+  }
 
   render() {
     let {documents} = this.props;
@@ -41,7 +45,7 @@ export default class DocumentsList extends Component {
           />
           <CardContent>
             <Typography type="headline" component="h2">
-              {d.documentType}
+              {this.getDocumentType(d.documentType)}
             </Typography>
             <Typography component="p">
               {d.content}
