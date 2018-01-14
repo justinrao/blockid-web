@@ -36,7 +36,7 @@ export default class CompanyInfo extends Component {
         country: 'Canada'
       },
       countryOfIncorporation: 'Canada',
-      dateOfIncorporation: '2015-01-01'
+      dateOfIncorporation: '1869-07-04T00:00:00.000Z'
     };
   }
   render() {
