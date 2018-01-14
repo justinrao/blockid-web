@@ -73,7 +73,8 @@ export default class AuditList extends Component {
                         }
                     ],
                     "riskRating": "STANDARD",
-                    "updatedBy": "Aute duis velit."
+                    "updatedBy": "Aute duis velit.",
+                    "updateDescription": "Update Certificate of Authorized Signatories"
                 }
             ],
             "targetRegistry": {
@@ -122,7 +123,8 @@ export default class AuditList extends Component {
                     },
                     "kycStatus": "INIT",
                     "riskRating": "RESTRICTED",
-                    "updatedBy": "Aute duis velit."
+                    "updatedBy": "Aute duis velit.",
+                    "updateDescription": "Create record"
                 }
             ],
             "targetRegistry": {
@@ -153,9 +155,10 @@ export default class AuditList extends Component {
          <Table> 
          <TableHead>
            <TableRow>
-             <TableCell style={{fontWeight: 'bold', fontSize: '1.2em'}}>Entry type</TableCell>
+             <TableCell style={{fontWeight: 'bold', fontSize: '1.2em'}}>Change</TableCell>
              <TableCell style={{fontWeight: 'bold', fontSize: '1.2em'}}>One RBC Risk Rating</TableCell>
              <TableCell style={{fontWeight: 'bold', fontSize: '1.2em'}}>KYC Status</TableCell>
+             <TableCell style={{fontWeight: 'bold', fontSize: '1.2em'}}>Description</TableCell>
              <TableCell style={{fontWeight: 'bold', fontSize: '1.2em'}}>Updated By</TableCell>
              <TableCell style={{fontWeight: 'bold', fontSize: '1.2em'}}>Updated On</TableCell>
            </TableRow>
@@ -167,6 +170,7 @@ export default class AuditList extends Component {
                 <TableCell  style={{fontSize: '1.2em'}}>{entry.$class.replace(/org\.hyperledger\.composer\.system\./,'').replace(/Asset/, '')}</TableCell>
                 <TableCell  style={{fontSize: '1.2em', ...ddstyles[`${entry.resources[0].riskRating}`]}}>{this.getRating(entry.resources[0].riskRating)}</TableCell>
                 <TableCell  style={{fontSize: '1.2em', ...ddstyles[`${entry.resources[0].KycStatus}`]}}>{this.getStatus(entry.resources[0].kycStatus)}</TableCell>
+                <TableCell  style={{fontSize: '1.2em'}}>{entry.resources[0].updateDescription}</TableCell>
                 <TableCell  style={{fontSize: '1.2em'}}>{entry.resources[0].updatedBy}</TableCell>
                 <TableCell  style={{fontSize: '1.2em'}}>{moment(entry.timestamp).toString()}</TableCell>
               </TableRow>

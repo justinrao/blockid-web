@@ -64,7 +64,8 @@
                 "dateOfBirth": "September 14, 1942",
                 "role": "Director"
             }],
-            "updatedBy": "RBC Capital Market - Alice Chang"
+            "updatedBy": "RBC Capital Market - Alice Chang",
+            "updateDescription": "Update Certificate of Authorized Signatories"
         }
     ]
 }
