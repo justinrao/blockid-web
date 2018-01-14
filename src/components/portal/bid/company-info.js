@@ -12,6 +12,8 @@ import ExpansionPanel, {
 } from 'material-ui/ExpansionPanel';
 import ExpandMoreIcon from 'material-ui-icons/ExpandMore'
 import Typography from 'material-ui/Typography/Typography';
+import moment from 'moment';
+
 export default class CompanyInfo extends Component {
   constructor(props) {
     super(props);
@@ -81,7 +83,7 @@ export default class CompanyInfo extends Component {
           </ListItem>
           <ListItem >
             <ListItemText style={labelStyle} primary={this.labels.dateOfIncorporation} />
-            <ListItemText style={styles.left} primary={client.dateOfIncorporation} />
+            <ListItemText style={styles.left} primary={moment(client.dateOfIncorporation).format('MMMM Do YYYY')} />
           </ListItem>
           </List>
 </ExpansionPanelDetails>
