@@ -37,7 +37,7 @@ export class BidApi {
     }
 
     static find(search) {
-        return request('clients', {
+		return request('clients/bylegalname', {
             params: {
                 legalName: search
             }
