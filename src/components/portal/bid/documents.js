@@ -2,15 +2,17 @@ import React, { Component } from 'react';
 import { relative, isAbsolute } from 'path';
 import Typography from 'material-ui/Typography'
 import styles from '../../styles'
-import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card';
+import Card, { CardActions, CardContent, CardMedia, CardHeader } from 'material-ui/Card';
 import ImagePreview from './image-preview';
 import Button from 'material-ui/Button';
-
+import moment from 'moment';
+import {FileDownload, InsertDriveFile} from 'material-ui-icons'
 const cstyles = {
   card: {
+    flex: '1',
     minWidth: 400,
-      width: "100%",
-      "margin-bottom": 10
+      // width: "100%",
+    margin: 8
   },
   media: {
     height: 200,
@@ -70,18 +72,19 @@ export default class DocumentsList extends Component {
             image={d.preview}
             title="Contemplative Reptile"
           />
-          <CardContent>
-            <Typography type="headline" component="h2">
+          <CardHeader avatar={<InsertDriveFile/>} title={<Typography type="headline" component="h2">
               {this.getDocumentType(d.documentType)}
-            </Typography>
-            <Typography component="p">
+            </Typography>}/>
+          <CardContent>
+            
+            <Typography style={{paddingBottom: 16}}type='display0' component="p">
               {d.description}
             </Typography>
-            <Typography component="p">
+            <Typography  type='display0' component="p">
               Updated by: {d.updatedBy}
             </Typography>
-            <Typography component="p">
-              Expires: {d.expiryDate}
+            <Typography component="p" type='display0'>
+              Expires: {moment(d.expiryDate).format('MMMM Do, YYYY')}
             </Typography>
           </CardContent>
           <CardActions>
