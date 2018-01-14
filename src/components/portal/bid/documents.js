@@ -27,10 +27,12 @@ export default class DocumentsList extends Component {
   }
 
   render() {
+    let {documents} = this.props;
+    documents = documents || this.state.documents || [];    
     return (
       <div style={styles.containerWrap}>
-        {this.state.documents.length > 0 && 
-          this.state.documents.map((d) => {
+        {documents.length > 0 && 
+          documents.map((d) => {
           return (
           <Card style={cstyles.card} key={`document-${d.documentid}`}>
           <CardMedia

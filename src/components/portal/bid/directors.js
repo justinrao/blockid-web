@@ -19,11 +19,14 @@ export default class Directors extends Component {
   }
 
   render() {
+    let {directors} = this.props;
+    directors = directors || this.state.directors;
+  
     return (
       <div style={styles.containerWrap}>     
-        {this.state.directors.length > 0 && 
+        {directors.length > 0 && 
           <List>
-          {this.state.directors.map((item) => {
+          {directors.map((item) => {
                 return <ListItem key={`director-${item.id}`}><AccountCircle /><ListItemText primary={item.name} secondary={item.audit}/></ListItem>
               })
               }

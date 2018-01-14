@@ -63,10 +63,10 @@ export default class BidView extends Component {
           </Tabs>
          {view === 'audit' && ( <AuditList {...this.props} audits={client.auditLogs}/>)}
          {view === 'checklist' && ( <Checklist {...this.props}/>)}
-         {view === 'contacts' && ( <Contacts {...this.props}/>)}
-         {view === 'directors' && ( <Directors {...this.props}/>)}
-         {view === 'documents' && ( <Documents {...this.props}/>)}
-         {view === 'subsidiaries' && ( <Subsidiaries {...this.props}/>)}          
+         {view === 'contacts' && ( <Contacts contacts={client.contacts} {...this.props}/>)}
+         {view === 'directors' && ( <Directors directors={client.directors} {...this.props}/>)}
+         {view === 'documents' && ( <Documents documents={client.documents} {...this.props}/>)}
+         {view === 'subsidiaries' && ( <Subsidiaries subsidiaries={client.subsidiaries} {...this.props}/>)}          
       </div>
     );
   }

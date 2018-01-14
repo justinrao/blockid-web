@@ -31,11 +31,13 @@ export default class Contacts extends Component {
   }
 
   render() {
+    let {contacts} = this.props;
+    contacts = contacts || this.state.contacts;
     return (
       <div style={styles.containerWrap}>
-        {this.state.contacts.length > 0 && 
+        {contacts.length > 0 && 
           <List>
-          {this.state.contacts.map((item) => {
+          {contacts.map((item) => {
                 return <ListItem key={`contact-${item.id}`}><Avatar><SettingsPhone /></Avatar><ListItemText primary={item.label} secondary={item.audit}/></ListItem>
               })
               }

@@ -139,28 +139,36 @@ export default class AuditList extends Component {
     };
   }
 
+  getRating(rating) {
+    const r = this.props.store.riskRating.find((r) => r.id === rating);
+    return r.label || rating;
+  }
+  getStatus(status) {
+    const s = this.props.store.kycStatus.find((r) => r.id === status);
+    return s.label || status;
+  }
   render() {
     return (
       <div style={styles.containerWrap}>
          <Table> 
          <TableHead>
            <TableRow>
-             <TableCell>Entry type</TableCell>
-             <TableCell>One RBC Risk Rating</TableCell>
-             <TableCell>KYC Status</TableCell>
-             <TableCell>Updated By</TableCell>
-             <TableCell>Updated On</TableCell>
+             <TableCell style={{fontWeight: 'bold', fontSize: '1.2em'}}>Entry type</TableCell>
+             <TableCell style={{fontWeight: 'bold', fontSize: '1.2em'}}>One RBC Risk Rating</TableCell>
+             <TableCell style={{fontWeight: 'bold', fontSize: '1.2em'}}>KYC Status</TableCell>
+             <TableCell style={{fontWeight: 'bold', fontSize: '1.2em'}}>Updated By</TableCell>
+             <TableCell style={{fontWeight: 'bold', fontSize: '1.2em'}}>Updated On</TableCell>
            </TableRow>
          </TableHead>
          <TableBody>
            {this.state.audits.map(entry => {
              return (
               <TableRow key={`transactionId-${entry.transactionId}`}>
-                <TableCell>{entry.$class.replace(/org\.hyperledger\.composer\.system\./,'')}</TableCell>
-                <TableCell style={ddstyles[`${entry.resources[0].riskRating}`]}>{entry.resources[0].riskRating}</TableCell>
-                <TableCell style={ddstyles[`${entry.resources[0].KycStatus}`]}>{entry.resources[0].KycStatus}</TableCell>
-                <TableCell>{entry.resources[0].updatedBy}</TableCell>
-                <TableCell>{moment(entry.timestamp).toString()}</TableCell>
+                <TableCell  style={{fontSize: '1.2em'}}>{entry.$class.replace(/org\.hyperledger\.composer\.system\./,'')}</TableCell>
+                <TableCell  style={{fontSize: '1.2em', ...ddstyles[`${entry.resources[0].riskRating}`]}}>{this.getRating(entry.resources[0].riskRating)}</TableCell>
+                <TableCell  style={{fontSize: '1.2em', ...ddstyles[`${entry.resources[0].KycStatus}`]}}>{this.getStatus(entry.resources[0].KycStatus)}</TableCell>
+                <TableCell  style={{fontSize: '1.2em'}}>{entry.resources[0].updatedBy}</TableCell>
+                <TableCell  style={{fontSize: '1.2em'}}>{moment(entry.timestamp).toString()}</TableCell>
               </TableRow>
              );
            })}

@@ -3,6 +3,9 @@ import {Link} from 'react-router-dom';
 
 import {SignUpForm} from './signup'
 import Card, {CardHeader, CardContent} from 'material-ui/Card'
+import List, {ListItemIcon, ListItemText, ListItem} from 'material-ui/List'
+
+import {Timeline, Security, FastForward, Check} from 'material-ui-icons'
 
 import Login from './Login';
 import styles from './styles'
@@ -53,13 +56,39 @@ export default class LandingPage extends Component {
             <div style={styles.info}>
               <h1>RBC bID</h1>
               <h3>Centralized client identification</h3>
-              <ul style={{textAlign: 'left', listStyleType: 'circle'}}>
-                  <li>Secure
-                  <ul style={{textAlign: 'left', listStyleType: 'circle'}}><li>Fast
-                  <ul style={{textAlign: 'left', listStyleType: 'circle'}}><li>Reliable
-                  <ul style={{textAlign: 'left', listStyleType: 'circle'}}><li>Audit chain</li></ul></li></ul></li></ul></li>
-              </ul>
-            </div>
+              <List>
+        <ListItem >
+          <ListItemIcon>
+            <Security />
+          </ListItemIcon>
+          <ListItemText primary="Secure" />
+        </ListItem>
+        <ul><List>
+        <ListItem >
+          <ListItemIcon>
+          <FastForward />
+          </ListItemIcon>
+          <ListItemText primary="Fast" />
+        </ListItem>
+        <ul><List>
+        <ListItem>
+          <ListItemIcon>
+          <Check />
+          </ListItemIcon>
+          <ListItemText primary="Reliable" />
+        </ListItem>
+        <ul><List>
+        <ListItem>
+          <ListItemIcon>
+          <Timeline />
+          </ListItemIcon>
+          <ListItemText primary="Audit Chain" />
+        </ListItem>
+      </List></ul>
+      </List></ul>
+      </List></ul>
+      </List>
+            </div>            
         <div style={styles.containerColumn}>
           <Login style={styles.content} {...this.props} />
           {/* <h3 style={{textAlign: 'center', color: 'white'}}>OR</h3>
