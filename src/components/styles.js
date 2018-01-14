@@ -87,6 +87,7 @@ const styles = {
       },
     info: {
         padding: 16,
+        "margin-bottom": 15,
         flex: '1 1 auto',
       },
     main: {
