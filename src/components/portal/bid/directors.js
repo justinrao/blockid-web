@@ -5,6 +5,7 @@ import styles from '../../styles'
 import List, {ListItem, ListItemText} from 'material-ui/List';
 import moment from 'moment'
 import {Check, AccountCircle} from 'material-ui-icons';
+import Divider from 'semantic-ui-react/dist/commonjs/elements/Divider/Divider';
 
 export default class Directors extends Component {
   constructor(props) {
@@ -27,7 +28,7 @@ export default class Directors extends Component {
         {directors.length > 0 && 
           <List>
           {directors.map((item, index) => {
-                return <ListItem key={`director-${index}`}><AccountCircle /><ListItemText primary={item.name} secondary={item.role}/></ListItem>
+                return <div><ListItem key={`director-${index}`}><AccountCircle /><ListItemText primary={item.name} secondary={item.role}/></ListItem><Divider/></div>
               })
               }
           </List>          

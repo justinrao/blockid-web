@@ -17,6 +17,7 @@ import {PropsRoute} from '../Layout'
 import {BidView} from './bid';
 import AccessRequest from './access';
 import { getAuditLog } from '../../actions/bidActions.js'
+import Link from 'react-router-dom/Link';
 
 const menuButtonStyle = {
     marginLeft: -12,
@@ -53,10 +54,10 @@ export default class PortalLandingPage extends React.Component {
 
         <AppBar style={{background: primary}} position="static">
           <Toolbar>
-            <IconButton style={menuButtonStyle} color="contrast" aria-label="Menu">
+            {/* <IconButton style={menuButtonStyle} color="contrast" aria-label="Menu">
               <MenuIcon />
-            </IconButton>
-            <Typography type="title" color="inherit" style={styles.container}>
+            </IconButton> */}
+            <Typography type="title" color="inherit" style={styles.container} component={Link} to={`/portal`}>
               RBC bID - Centralized client identifiation
             </Typography>
             {auth && (

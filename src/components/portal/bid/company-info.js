@@ -13,6 +13,7 @@ import ExpansionPanel, {
 import ExpandMoreIcon from 'material-ui-icons/ExpandMore'
 import Typography from 'material-ui/Typography/Typography';
 import moment from 'moment';
+import Link from 'react-router-dom/Link';
 
 export default class CompanyInfo extends Component {
   constructor(props) {
@@ -54,10 +55,11 @@ export default class CompanyInfo extends Component {
     return (
       <ExpansionPanel defaultExpanded>
         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-        <Typography type="title" style={styles.content}>{client.legalName}</Typography>
+        <Typography type="title" style={styles.content}><Link to="/portal">Clients</Link> &nbsp;/ {client.legalName}</Typography>
         <RiskRating style={{flex: '0 0 20%'}} rating={client.riskRating} ratings={this.props.store.riskRating}/>
         </ExpansionPanelSummary>
-        <ExpansionPanelDetails>
+        <Divider/>
+        <ExpansionPanelDetails dense>
         <List style={styles.info}>
         <ListItem >
         <ListItemText style={addressStyle} primary={this.labels.legalAddress} />
@@ -71,6 +73,10 @@ export default class CompanyInfo extends Component {
           </div>
         )} />}
       </ListItem>
+      <ListItem >
+            <ListItemText style={labelStyle} primary="Last Updated" />
+            <ListItemText style={styles.left} primary={`By ${client.updatedBy} on ${moment(client.updateTs).format('MMMM Do YYYY ')}`} />
+          </ListItem>
         </List>
         <List style={styles.info}>
           <ListItem >

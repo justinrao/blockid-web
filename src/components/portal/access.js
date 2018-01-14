@@ -10,7 +10,7 @@ import AccountCircle from 'material-ui-icons/AccountCircle';
 import Switch from 'material-ui/Switch';
 import { FormControlLabel, FormGroup } from 'material-ui/Form';
 import Menu, { MenuItem } from 'material-ui/Menu';
-import styles, {primary} from '../styles';
+import styles, {primary, secondary} from '../styles';
 import Card, { CardContent } from 'material-ui/Card';
 import {Check, Search, Clear} from 'material-ui-icons';
 import CardActions from 'material-ui/Card/CardActions';
@@ -19,6 +19,7 @@ import { Link } from 'react-router-dom';
 import Input, { InputLabel, InputAdornment } from 'material-ui/Input';
 import FormControl from 'material-ui/Form/FormControl';
 import CircularProgress from 'material-ui/Progress/CircularProgress';
+import FormHelperText from 'material-ui/Form/FormHelperText';
 export default class AccessRequest extends React.Component {
   constructor(props) {
     super(props);
@@ -27,7 +28,7 @@ export default class AccessRequest extends React.Component {
       this.props.store.findBid(search);
     } else {
       // TODO remove for Monday
-      this.props.store.getBids();
+      // this.props.store.getBids();
     }
     this.state = {
       search: search || ''
@@ -41,13 +42,14 @@ export default class AccessRequest extends React.Component {
   handleSearchChange = (event) => this.setState({ ...this.state, search: event.target.value });
   clearSearch = () => {
     this.setState({ ...this.state, search: '' });
+    this.doSearch();
   }
 
   handleSearchKeyPress = (event) => {
-    if (event.key === 'Enter') {
+    if (event.keyCode === 13) {
       this.doSearch();
       event.preventDefault();
-    } else if (event.key === 'Escape') {
+    } else if (event.keyCode === 27) {
       this.clearSearch();
       event.preventDefault();
     }
@@ -61,26 +63,36 @@ export default class AccessRequest extends React.Component {
     const companies = this.props.store.bids || [];
     return (
       <div style={styles.containerWrap}>
-
+        {/* <Typography type="title">Client Search</Typography> */}
         <FormControl fullWidth={true}>
           {/* <InputLabel htmlFor="search">Search</InputLabel> */}
           <Input
             id="adornment-search"
-            placeholder="Search for Company"
+            style={{fontSize: '1.2em', border: 'solid 1px ' + secondary, padding: 4}}
+            placeholder="Search for Client"
             value={this.state.search}
             onChange={this.handleSearchChange}
-            onKeyPress={this.handleSearchKeyPress}
+            onKeyUp={this.handleSearchKeyPress}
+            disableUnderline={true}
+            startAdornment={
+              <InputAdornment position="start">
+                <IconButton>
+                  <Search/>
+                </IconButton>
+              </InputAdornment>
+            }
             endAdornment={
               <InputAdornment position="end">
                 <IconButton>
-                  {!this.state.search ? <Search onClick={this.doSearch}/> : <Clear onClick={this.clearSearch}/>}
+                  {this.state.search && <Clear onClick={this.clearSearch}/>}
                 </IconButton>
               </InputAdornment>
             }
           />
+          {this.state.search && <FormHelperText id="search-helper-text"><Typography type='subheading'>Found {`${companies.length} results.`}</Typography></FormHelperText>}
         </FormControl>
         <div style={styles.info}>
-      { companies.map(company => {
+      { !!this.state.search && companies.map(company => {
         const isPending = () => {return company.access === "INPROGRESS"};
         const address = company.legalAddress;
         return (<Card style={{...styles.info}} key={`company-${company.clientBID}`}>

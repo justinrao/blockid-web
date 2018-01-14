@@ -5,6 +5,7 @@ import styles from '../../styles'
 import List, {ListItem, ListItemText} from 'material-ui/List';
 import Avatar from 'material-ui/Avatar';
 import {SettingsPhone} from 'material-ui-icons';
+import Divider from 'semantic-ui-react/dist/commonjs/elements/Divider/Divider';
 
 const ddstyles = {
   customWidth: {
@@ -67,8 +68,8 @@ export default class Contacts extends Component {
         {contacts.length > 0 && 
           <List>
           {contacts.map((item, index) => {
-                return <ListItem key={`contact-${index}`}><Avatar><SettingsPhone /></Avatar>
-                    <ListItemText primary={`${item.contactType}  - ${item.contactPersonalName}`} secondary={item.phoneNumber}/></ListItem>
+                return <div><ListItem key={`contact-${index}`}><Avatar><SettingsPhone /></Avatar>
+                    <ListItemText primary={`${item.contactType}  - ${item.contactPersonalName}`} secondary={item.phoneNumber}/></ListItem><Divider/></div>
               })
               }
           </List>          
