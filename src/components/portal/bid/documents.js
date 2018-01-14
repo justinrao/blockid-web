@@ -7,7 +7,9 @@ import Button from 'material-ui/Button';
 
 const cstyles = {
   card: {
-    minWidth: 400
+    minWidth: 400,
+      width: "100%",
+      "margin-bottom": 10
   },
   media: {
     height: 200,
@@ -38,7 +40,7 @@ export default class DocumentsList extends Component {
         {documents.length > 0 && 
           documents.map((d) => {
           return (
-          <Card style={cstyles.card} key={`document-${d.documentid}`}>
+          <Card style={cstyles.card} key={`document-${d.documentId}`}>
           <CardMedia
             image={d.preview}
             title="Contemplative Reptile"
@@ -48,7 +50,7 @@ export default class DocumentsList extends Component {
               {this.getDocumentType(d.documentType)}
             </Typography>
             <Typography component="p">
-              {d.content}
+              {d.description}
             </Typography>
             <Typography component="p">
               Updated by: {d.updatedBy}

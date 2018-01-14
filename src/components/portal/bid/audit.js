@@ -61,7 +61,7 @@ export default class AuditList extends Component {
                             "postalCode": "Commodo."
                         }
                     },
-                    "KycStatus": "DONE",
+                    "kycStatus": "DONE",
                     "documents": [
                         {
                             "$class": "com.rbc.bid.Document",
@@ -120,7 +120,7 @@ export default class AuditList extends Component {
                             "postalCode": "Commodo."
                         }
                     },
-                    "KycStatus": "INIT",
+                    "kycStatus": "INIT",
                     "riskRating": "RESTRICTED",
                     "updatedBy": "Aute duis velit."
                 }
@@ -164,9 +164,9 @@ export default class AuditList extends Component {
            {this.state.audits.map(entry => {
              return (
               <TableRow key={`transactionId-${entry.transactionId}`}>
-                <TableCell  style={{fontSize: '1.2em'}}>{entry.$class.replace(/org\.hyperledger\.composer\.system\./,'')}</TableCell>
+                <TableCell  style={{fontSize: '1.2em'}}>{entry.$class.replace(/org\.hyperledger\.composer\.system\./,'').replace(/Asset/, '')}</TableCell>
                 <TableCell  style={{fontSize: '1.2em', ...ddstyles[`${entry.resources[0].riskRating}`]}}>{this.getRating(entry.resources[0].riskRating)}</TableCell>
-                <TableCell  style={{fontSize: '1.2em', ...ddstyles[`${entry.resources[0].KycStatus}`]}}>{this.getStatus(entry.resources[0].KycStatus)}</TableCell>
+                <TableCell  style={{fontSize: '1.2em', ...ddstyles[`${entry.resources[0].KycStatus}`]}}>{this.getStatus(entry.resources[0].kycStatus)}</TableCell>
                 <TableCell  style={{fontSize: '1.2em'}}>{entry.resources[0].updatedBy}</TableCell>
                 <TableCell  style={{fontSize: '1.2em'}}>{moment(entry.timestamp).toString()}</TableCell>
               </TableRow>

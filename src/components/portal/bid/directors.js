@@ -26,8 +26,8 @@ export default class Directors extends Component {
       <div style={styles.containerWrap}>     
         {directors.length > 0 && 
           <List>
-          {directors.map((item) => {
-                return <ListItem key={`director-${item.id}`}><AccountCircle /><ListItemText primary={item.name} secondary={item.audit}/></ListItem>
+          {directors.map((item, index) => {
+                return <ListItem key={`director-${index}`}><AccountCircle /><ListItemText primary={item.name} secondary={item.role}/></ListItem>
               })
               }
           </List>          
