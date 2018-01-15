@@ -58,7 +58,7 @@ export default class PortalLandingPage extends React.Component {
               <MenuIcon />
             </IconButton> */}
             <Typography type="title" color="inherit" style={styles.container} component={Link} to={`/portal`}>
-              RBC bID - Centralized Client Identification
+              RBC bID - Centralized client identifiation
             </Typography>
             {auth && (
                 <div>
