@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { relative, isAbsolute } from 'path';
 import Typography from 'material-ui/Typography/Typography';
+import {blue, green, orange, red} from "material-ui/colors/index";
 
 const ddstyles = {
   customWidth: {
@@ -30,14 +31,20 @@ const ddstyles = {
   dropzoneHeader: {
     fontSize: '1.1em',
     marginTop: '10',
-  }
+  },
+  STANDARD: { color: green[500] },
+  MEDIUM: { color: blue[500] },
+  HIGH_1: { color: red[500] },
+  HIGH_2: { color: red[600] },
+  HIGH_3: { color: red[700] },
+  RESTRICTED: { color: orange[500] },
 };
 export default class RiskRating extends Component {
 
   render() {
     const r = this.props.ratings.find((r) => r.id === this.props.rating)
     return (
-      <Typography type="subheading"><b>One Rating:</b> {(r && r.label) || this.props.rating}</Typography>
+      <Typography type="subheading"><b>One Risk Rating:</b> {r && <span style={{...ddstyles[r.id]}}> {r.label || this.props.rating}</span>}</Typography>
     );
   }
 }
