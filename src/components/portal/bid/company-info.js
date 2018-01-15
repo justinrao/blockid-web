@@ -42,8 +42,10 @@ export default class CompanyInfo extends Component {
   }
   render() {
     const labelStyle = {
-      flexBasis: '40%',
-      flexGrow: 'unset'
+      flexBasis: '35%',
+      flexGrow: 'unset',
+        opacity: 0.7
+
     }
     const addressStyle = {
       ...labelStyle,
@@ -67,15 +69,18 @@ export default class CompanyInfo extends Component {
           <div>
           <div>{client.legalAddress.addressLine1}</div>
           <div>{client.legalAddress.addressLine2}</div>
-          <div>{client.legalAddress.city}, {client.legalAddress.province}</div>
+          <div>{client.legalAddress.city}, {client.legalAddress.province} {client.legalAddress.postalCode}</div>
           <div>{client.legalAddress.country}</div>
-          <div>{client.legalAddress.postalCode}</div>
           </div>
         )} />}
       </ListItem>
       <ListItem >
-            <ListItemText style={labelStyle} primary="Last Updated" />
-            <ListItemText style={styles.left} primary={`By ${client.updatedBy} on ${moment(client.updateTs).format('MMMM Do YYYY ')}`} />
+            <ListItemText style={labelStyle} primary="Last Updated" disableTypography={true} />
+            <ListItemText style={styles.left} primary={
+                <div>
+                <div>{`By ${client.updatedBy}`}</div>
+                    <div>{`on ${moment(client.updateTs).format('MMM Do YYYY ')}`}</div>
+                </div>}/>
           </ListItem>
         </List>
         <List style={styles.info}>
