@@ -51,7 +51,7 @@ export function requestAccess(clientBID) {
 			setTimeout(() => {
 				dispatch({type: 'REQUEST_ACCESS', payload: {clientBID, access: 'GRANTED'}})
 				resolve();
-			}, 3000);
+			}, 10000);
 		})
 	}
 }
