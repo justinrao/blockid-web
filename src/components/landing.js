@@ -55,7 +55,7 @@ export default class LandingPage extends Component {
         <div style={styles.mainContainer}>
             <div style={styles.info}>
               <h1>RBC bID</h1>
-              <h3>Centralized client identification</h3>
+              <h3>Centralized Client Identification</h3>
               <List>
         <ListItem >
           <ListItemIcon>
