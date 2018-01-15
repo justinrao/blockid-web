@@ -73,8 +73,9 @@ export default class AuditList extends Component {
                         }
                     ],
                     "riskRating": "STANDARD",
-                    "updatedBy": "Aute duis velit.",
-                    "updateDescription": "Update Certificate of Authorized Signatories"
+                    "updatedBy": "RBC Cpaital Market - Alice Chang",
+                    "updateDescription": "Update Certificate of Authorized Signatories",
+					"updateTs": "2017-11-30T00:00:00.000Z"
                 }
             ],
             "targetRegistry": {
@@ -123,8 +124,9 @@ export default class AuditList extends Component {
                     },
                     "kycStatus": "INIT",
                     "riskRating": "RESTRICTED",
-                    "updatedBy": "Aute duis velit.",
-                    "updateDescription": "Create record"
+                    "updatedBy": "RBC Capital Market - Victorial Chu",
+					"updateDescription": "Create record",
+					"updateTs": "2017-11-30T00:00:00.000Z"
                 }
             ],
             "targetRegistry": {
@@ -172,7 +174,7 @@ export default class AuditList extends Component {
                 <TableCell  style={{fontSize: '1.2em', ...ddstyles[`${entry.resources[0].KycStatus}`]}}>{this.getStatus(entry.resources[0].kycStatus)}</TableCell>
                 <TableCell  style={{fontSize: '1.2em'}}>{entry.resources[0].updateDescription}</TableCell>
                 <TableCell  style={{fontSize: '1.2em'}}>{entry.resources[0].updatedBy}</TableCell>
-                <TableCell  style={{fontSize: '1.2em'}}>{moment(entry.timestamp).toString()}</TableCell>
+                <TableCell  style={{fontSize: '1.2em'}}>{moment(entry.resources[0].updateTs).toString()}</TableCell>
               </TableRow>
              );
            })}
